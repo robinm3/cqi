@@ -1,1 +1,6 @@
-# TODO
+FROM yarn
+  RUN yarn build
+  RUN docker build ./dist
+
+FROM yarn
+RUN cd dist && yarn run
