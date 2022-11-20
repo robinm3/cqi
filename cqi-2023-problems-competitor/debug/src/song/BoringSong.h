@@ -7,6 +7,8 @@
 class BoringSong : public Song {
 public:
     BoringSong(const std::string &name, const std::string &lyrics);
+
+    std::string sing() const;
 };
 
 

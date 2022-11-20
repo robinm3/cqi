@@ -16,10 +16,10 @@ public:
     int getRequestedSongCount() const;
 
 private:
-    const Song* _requestedSongs[9]{};
+    const Song* _requestedSongs[10]{};
     int _requestedSongCount = 0;
     int _requestedSongsHeadIndex = 0;
-    int _requestedSongsTailIndex = 420; // ¯\_(ツ)_/¯
+    int _requestedSongsTailIndex = 9; // ¯\_(ツ)_/¯
 };
 
 

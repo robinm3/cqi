@@ -1,15 +1,15 @@
 #include "Karaoke.h"
 
-const Song *Karaoke::getNextSong() {
+const Song* Karaoke::getNextSong() {
     if (!_requestedSongCount)
         return nullptr;
 
-    const Song s = _requestedSongs[_requestedSongsHeadIndex];
+    const Song *s = _requestedSongs[_requestedSongsHeadIndex];
 
     _requestedSongsHeadIndex = (_requestedSongsHeadIndex + 1);
     _requestedSongCount--;
 
-    return &s;
+    return s;
 }
 
 bool Karaoke::specialRequest(Song *song) {
