@@ -4,7 +4,7 @@
 
 #include "Song.h"
 
-class GreatSong : Song {
+class GreatSong : public Song {
 public:
     GreatSong(const std::string &name, const std::string &lyrics);
 

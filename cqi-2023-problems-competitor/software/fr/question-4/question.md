@@ -16,5 +16,4 @@ a) Sur la base de la Figure, décrivez le cycle de vie utilisé pour le dévelop
 
 b) Sur la base du cycle de vie et des données de la Figure, décrivez des problèmes potentiels que ce nouveau logiciel pourrait avoir et qui pourraient concerner la maintenance.
 
-c) En tant que gestionnaire de l’équipe de maintenance, et sur la base des problèmes décrits précédemment, que feriez-vous afin de mitiger les défis de maintenance apportés par ce nouveau
-logiciel ?
+c) En tant que gestionnaire de l’équipe de maintenance, et sur la base des problèmes décrits précédemment, que feriez-vous afin de mitiger les défis de maintenance apportés par ce nouveau logiciel ?

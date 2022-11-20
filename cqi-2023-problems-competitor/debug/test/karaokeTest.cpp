@@ -4,7 +4,6 @@
 #include <song/BoringSong.h>
 
 using namespace std;
-using namespace Catch::Matchers;
 
 SCENARIO("Karaoke") {
 

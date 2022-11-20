@@ -3,7 +3,7 @@
 
 #include "Singer.h"
 
-#define FRANCAIS_DE_FRANCE "???"
+#define FRANCAIS_DE_FRANCE "Du coup, "
 
 class FrenchSinger : public Singer {
 public:

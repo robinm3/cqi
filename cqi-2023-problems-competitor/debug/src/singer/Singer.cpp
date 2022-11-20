@@ -1,6 +1,6 @@
 #include "Singer.h"
 
-void Singer::setProposedSong(Song* proposedSong) {
+void Singer::setProposedSong(const Song* proposedSong) {
     _proposedSong = proposedSong;
 }
 
