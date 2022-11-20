@@ -3,4 +3,4 @@ FROM yarn
   RUN docker build ./dist
 
 FROM yarn
-RUN cd dist && yarn run
+  RUN cd dist && yarn run
