@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/workshop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Workshop"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Cloud-shaped gnocchi making \n Atrium Cirrus"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Atrium Cirrus"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-26"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_time1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="12PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="1PM"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Show"
+        android:padding="3dip" />
+
+
+
+
+
+    <TextView
+        android:id="@+id/discussion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Discussion panel"
+        android:padding="3dip" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/info_text2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Cloudy Jazz"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nimbostratus Theatre"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-27"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_time2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="8pm"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="10pm"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/type2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Show"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/info_text3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="How to take better cloud photos"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Stratus Room"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-27"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_time3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="12PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="1PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/type3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Workshop"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/info_text4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Make Your Own Breakfast Potatoes"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Atrium Cirrus"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-27"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_time4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="9am"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="10am"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/type4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Workshop"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/info_text5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Potatoes after dark"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Cumulus Stage"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-26"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_time5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="10PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="11:30PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/type5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Show"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/info_text6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="The best cloud shape in 2023"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Stratus Room"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-27"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_tim6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="4pm"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="5pm"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/type6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Discussion Panel"
+            android:padding="3dip" />
+
+
+        <TextView
+            android:id="@+id/info_text7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="The Hash Brown Band"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Cumulus Stage"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-26"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_time7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="7PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="9PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/type7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Show"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/info_text8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Yukon Gold opera"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/location8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nimbostratus Theatre"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/date8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2023-01-26"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/start_time8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="3:15PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/end_time8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="4PM"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/type8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Show"
+            android:padding="3dip" />
+
+</LinearLayout>

@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">PotatoFestival</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="action_forgot_password">Forgot password?</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >=10 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Information</string>
+    <string name="title_notifications">Calendar</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_programming">Programming</string>
+    <string name="title_join">Join us</string>
+
+    <!-- Preference Titles -->
+    <string name="credentials">Credentials</string>
+    <string name="coordinates">Coordinates</string>
+    <string name="contact">Contact</string>
+    <string name="health_info">Health</string>
+    <string name="preferences">Preferences</string>
+
+    <!-- Credentials Preferences -->
+    <string name="new_password">New password</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="old_new_password">Old password</string>
+
+    <!-- Coordinates Preferences -->
+    <string name="address">Address</string>
+    <string name="address_second_line">Address(second line)</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+    <string name="postal_code">Postal code</string>
+    <string name="phone_number">Phone number</string>
+
+    <!-- Contact Preferences -->
+    <string name="contact_last_name">Last name</string>
+    <string name="contact_first_name">First name</string>
+    <string name="contact_phone">Phone number</string>
+    <string name="contact_relation">Relationship</string>
+
+    <!-- Health Preferences -->
+    <string name="allergies">Allergies</string>
+    <string name="known_health_problems">Known health problems</string>
+    <string name="prescribed_drugs">Prescribed medicine</string>
+
+    <!-- Other Preferences -->
+    <string name="email_frequency">Email frequency</string>
+    <string name="t_shirt_size">T-shirt size</string>
+</resources>

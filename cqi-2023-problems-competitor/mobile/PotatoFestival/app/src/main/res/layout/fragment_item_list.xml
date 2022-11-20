@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/workshop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Workshop"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            Cloud-shaped gnocchi making \n
+            Atrium Cirrus \n
+            2023-01-26 \n
+            12pm-1pm"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            How to take better cloud photos \n
+            Stratus Room \n
+            2023-01-27 \n
+            12pm-1pm"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            Make Your Own Breakfast Potatoes \n
+            Atrium Cirrus \n
+            2023-01-27 \n
+            9am-10am"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Show"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            Cloudy Jazz \n
+            Nimbostratus Theatre \n
+            2023-01-27 \n
+            8pm-10pm"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            Potatoes after dark \n
+            Cumulus Stage \n
+            2023-01-26 \n
+            10pm-11h30pm"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            The Hash Brown Band \n
+            Cumulus Stage \n
+            2023-01-26 \n
+            7pm-9pm"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            Yukon Gold opera \n
+            Nimbostratus Theatre \n
+            2023-01-26 \n
+            3:15pm-4pm"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/discussionPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Discussion Panel"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+            The best cloud shape in 2023 \n
+            Stratus Room \n
+            2023-01-27 \n
+            4pm-5pm"
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <TextView
+            android:id="@+id/info_text19"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="
+             \n
+             \n
+             \n
+            "
+            android:padding="3dip" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
+</ScrollView>
