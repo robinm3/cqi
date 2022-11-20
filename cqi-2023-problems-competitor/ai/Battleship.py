@@ -47,20 +47,19 @@ class Ship:
         return self._hit_count is self.length
 
 
-CARRIER_SHIP = Ship(5, 'c')
-BATTLESHIP_SHIP = Ship(4, 'b')
-DESTROYER_SHIP = Ship(3, 'd')
-SUBMARINE_SHIP = Ship(3, 's')
-PATROL_SHIP = Ship(2, 'p')
-SHIPS = CARRIER_SHIP, BATTLESHIP_SHIP, DESTROYER_SHIP, SUBMARINE_SHIP, PATROL_SHIP
-
-
 class BattleshipBoard:
     __ship_grid = []
     __ships = {}
     hit_grid = []
 
     def __init__(self):
+        CARRIER_SHIP = Ship(5, 'c')
+        BATTLESHIP_SHIP = Ship(4, 'b')
+        DESTROYER_SHIP = Ship(3, 'd')
+        SUBMARINE_SHIP = Ship(3, 's')
+        PATROL_SHIP = Ship(2, 'p')
+        SHIPS = CARRIER_SHIP, BATTLESHIP_SHIP, DESTROYER_SHIP, SUBMARINE_SHIP, PATROL_SHIP
+
         self.__ship_grid = [["" for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
         self.hit_grid = [[HitStatus.NONE for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
 
