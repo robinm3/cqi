@@ -1,0 +1,88 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/credentials">
+
+        <EditTextPreference
+            app:key="new_password"
+            app:title="@string/new_password" />
+
+        <EditTextPreference
+            app:key="confirm_new_password"
+            app:title="@string/confirm_new_password" />
+        <EditTextPreference
+            app:key="old_new_password"
+            app:title="@string/old_new_password" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/coordinates">
+
+        <EditTextPreference
+            app:key="address"
+            app:title="@string/address" />
+
+        <EditTextPreference
+            app:key="address_second_line"
+            app:title="@string/address_second_line" />
+        <EditTextPreference
+            app:key="city"
+            app:title="@string/city" />
+        <EditTextPreference
+            app:key="state"
+            app:title="@string/state" />
+        <EditTextPreference
+            app:key="country"
+            app:title="@string/country" />
+        <EditTextPreference
+            app:key="postal_code"
+            app:title="@string/postal_code" />
+        <EditTextPreference
+            app:key="phone_number"
+            app:title="@string/phone_number" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/contact">
+
+        <EditTextPreference
+            app:key="contact_last_name"
+            app:title="@string/contact_last_name" />
+        <EditTextPreference
+            app:key="contact_first_name"
+            app:title="@string/contact_first_name" />
+        <EditTextPreference
+            app:key="contact_phone"
+            app:title="@string/contact_phone" />
+        <EditTextPreference
+            app:key="contact_relation"
+            app:title="@string/contact_relation" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/health_info">
+        <EditTextPreference
+            app:key="allergies"
+            app:title="@string/allergies" />
+        <EditTextPreference
+            app:key="known_health_problems"
+            app:title="@string/known_health_problems" />
+        <EditTextPreference
+            app:key="prescribed_drugs"
+            app:title="@string/prescribed_drugs" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/preferences">
+        <DropDownPreference
+            app:entries="@array/email_frequency"
+            app:entryValues="@array/email_frequency_values"
+            app:key="email_frequency"
+            app:title="@string/email_frequency" />
+        <DropDownPreference
+            app:entries="@array/tshirt_sizes"
+            app:entryValues="@array/tshirt_sizes_values"
+            app:key="t_shirt_size"
+            app:title="@string/t_shirt_size" />
+        <EditTextPreference
+            app:key="prescribed_drugs"
+            app:title="@string/prescribed_drugs"
+            />
+    </PreferenceCategory>
+
+</PreferenceScreen>

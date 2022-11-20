@@ -1,0 +1,33 @@
+<resources>
+    <!-- Tshirt size Preference -->
+    <string-array name="tshirt_sizes">
+        <item>X-Small</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item>X-Large</item>
+    </string-array>
+
+    <string-array name="tshirt_sizes_values">
+        <item>xsmall</item>
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+        <item>xlarge</item>
+    </string-array>
+
+    <!-- Email frequency Preference -->
+    <string-array name="email_frequency">
+        <item>Never</item>
+        <item>Once per month</item>
+        <item>Once per week</item>
+        <item>Once per day</item>
+    </string-array>
+
+    <string-array name="email_frequency_values">
+        <item>never</item>
+        <item>once_per_month</item>
+        <item>once_per_week</item>
+        <item>once_per_day</item>
+    </string-array>
+</resources>
