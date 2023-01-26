@@ -38,7 +38,7 @@ export const login = async (email, password) => {
     .then((response) => {
       return response.data;
     });
-  Cookies.set("token", userResponse.token);
+  Cookies.set("token", userResponse, { secure: false });
   return userResponse;
 };
 
@@ -58,6 +58,7 @@ export const logout = async () => {
 
 export const getUser = async () => {
   const token = Cookies.get("token");
+  console.log("token:" + token);
   if (token && token !== "{}" && token !== "undefined") {
     const userResponse = await api
       .get("user:me", {
