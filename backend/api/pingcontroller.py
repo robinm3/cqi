@@ -3,7 +3,7 @@ from flask import jsonify, request
 from api.resource import ApiResource
 
 
-class Ping(ApiResource):
+class PingController(ApiResource):
     @staticmethod
     def path():
         return "/ping"
