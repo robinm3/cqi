@@ -1,8 +1,13 @@
 from flask import jsonify, request
-from flask_restful import Resource
+
+from api.resource import ApiResource
 
 
-class Ping(Resource):
+class Ping(ApiResource):
+    @staticmethod
+    def path():
+        return "/ping"
+
     def get(self):
         print("PING")
         return jsonify({'message': 'hello world'})
