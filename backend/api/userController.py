@@ -12,6 +12,10 @@ class UserController(ApiResource):
         return "/user"
 
     def post(self):
+        if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Token invalide"}, 400
+        if(not user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Vous n'êtes pas admin"}, 400
         data = request.get_json()
         user = User(data['type'], data['firstName'], data['lastName'], data['email'])
         if(user_repository.user_exist(user.email)):
