@@ -19,8 +19,8 @@ class ProblemsController(ApiResource):
         if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
 
-        data = request.get_data()
-        problem = Problem(data['name'], data['description'], data['type'], data['userId'])
+        data = request.get_json()
+        problem = Problem(data['name'], data['description'], data['type'], user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))["_id"])
         bdProblem = problem_repository.create_problem(problem)
         user_repository.add_notification(bdProblem.inserted_id)
         return {"message": "Problem created"}, 200
@@ -49,5 +49,6 @@ class NotificationsController(ApiResource):
             }
             transformed_notifications.append(transformed_problem)
 
-        return
+        user_repository.read_notifications(request.headers.get("authorization").replace("Bearer ", ""))
+        return transformed_notifications
 

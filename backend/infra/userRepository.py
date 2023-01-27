@@ -122,10 +122,14 @@ class UserRepository:
             return False
         return True
 
-    def add_notification(self):
+    def add_notification(self, problemId):
 
-        update = {"$push": {"unreadNotification": "some_id"}}
+        update = {"$push": {"unreadNotification": problemId}}
 
         # Update all documents in the collection
         self.user_db.update_many({}, update)
 
+    def read_notifications(self, token):
+        user = self.get(token)
+
+        self.user_db.update_many({"email": user["email"]},{"$unset": {"unreadNotification": ""}})

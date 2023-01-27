@@ -14,7 +14,7 @@ class ProblemsRepository:
         problem = {
             "name": problem.name,
             "description": problem.description,
-            "type": problem.type,
+            "type": problem.problemType,
             "userId": problem.userId
         }
 
