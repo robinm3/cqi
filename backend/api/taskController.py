@@ -50,8 +50,7 @@ class TaskController(ApiResource):
             tasks = task_repository.findAll()
         else:
             user = user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))
-            print(user["_id"])
-            tasks = task_repository.find(user["_id"])
+            tasks = task_repository.find(str(user["_id"]))
 
         tasks_json = json.loads(json_util.dumps(tasks))
         return tasks_json

@@ -23,7 +23,7 @@ class TaskRepository:
         tasks = list(self.task_db.find())
         return tasks
 
-    def find(self, userId) -> List:
+    def find(self, userId: str) -> List:
         tasks = list(self.task_db.find({"userId": userId}))
         return tasks
 

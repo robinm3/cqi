@@ -3,9 +3,8 @@ import uuid
 
 from domain.constants import MONGO_HOST, DB_NAME, SALT
 from pymongo import MongoClient
-from domain.utilitaire import generate_random_string, send_email_fr
+from domain.utilitaire import generate_random_string
 from domain.user import User
-import json
 import datetime
 
 client = MongoClient(MONGO_HOST)
@@ -81,7 +80,11 @@ class UserRepository:
             "token": token,
             "timestamp": datetime.datetime.now()
         }
+        print('here')
         self.tokens_db.insert_one(user)
+        print('there')
+        print(token)
+        print(user)
         return token
 
     def user_exist(self, email):

@@ -68,7 +68,9 @@ const PrivateLayout = () => {
             </div>
             <ul className="flex justify-around">
               <NavButton to="/notifications">Notifications</NavButton>
-              <button onClick={handleChangePassword}>Change password</button>
+              <button onClick={handleChangePassword} className="mr-4">
+                Change password
+              </button>
               <button onClick={handleLogout}>Logout</button>
             </ul>
           </nav>
