@@ -17,6 +17,7 @@ import CreateTask from "./pages/CreateTask";
 
 function App() {
   const [authenticated, setAuthenticated] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const authentication = async () => {
@@ -24,6 +25,7 @@ function App() {
         const auth = await getUser();
         setAuthenticated(auth);
       }
+      setLoading(false);
     };
     authentication();
   }, []);
@@ -31,7 +33,11 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider
-        value={{ user: authenticated, setUser: setAuthenticated }}
+        value={{
+          user: authenticated,
+          setUser: setAuthenticated,
+          loading: loading,
+        }}
       >
         <Routes>
           <Route path="/" element={<PrivateLayout />}>

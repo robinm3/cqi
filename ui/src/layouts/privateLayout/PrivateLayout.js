@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const PrivateLayout = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useUserContext();
+  const { user, setUser, loading } = useUserContext();
   const [clicked, setClicked] = useState(false);
   console.log(user);
 
@@ -39,7 +39,9 @@ const PrivateLayout = () => {
 
   return (
     <>
-      {!user ? (
+      {loading ? (
+        <div className="content-center">Loading...</div>
+      ) : !user ? (
         <Navigate to={{ pathname: "/login" }} />
       ) : (
         <div>
