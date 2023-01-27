@@ -4,7 +4,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api
 
-from api.problemController import ProblemsController
+from api.problemController import ProblemsController, NotificationsController
 from api.pingController import PingController
 from api.resource import ApiResource
 from api.taskController import TaskController
@@ -23,7 +23,8 @@ routes: list[Type[ApiResource]] = [
     LogoutController,
     UserController,
     TaskController,
-    ProblemsController
+    ProblemsController,
+    NotificationsController
 ]
 
 for route in routes:

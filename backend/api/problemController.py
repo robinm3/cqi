@@ -1,4 +1,4 @@
-from flask import request, make_response
+from flask import request, make_response, jsonify
 
 
 from api.resource import ApiResource
@@ -12,7 +12,7 @@ class ProblemsController(ApiResource):
     def post(self):
         data = request.get_data()
 
-        ProblemsRepository().add_problem(data['name'], data['description'], data['type'], data['userId'])
+        #ProblemsRepository().add_problem(data['name'], data['description'], data['type'], data['userId'])
 
         response = make_response()
         response.status_code = 200
@@ -25,30 +25,17 @@ class NotificationsController(ApiResource):
         return "/notifications"
 
     def get(self):
-        response = make_response()
-        response.status_code = 200
         data = {
             "notifications": [
                 {
                     "is_read": False,
-                    "notification": {
-                        "name": "New Feature Released",
-                        "description": "A new feature has been released on the platform. Check it out!",
-                        "type": "update",
-                        "author_name": "John Smith"
-                    }
+                    "notification": "Une notification lu"
                 },
                 {
                     "is_read": True,
-                    "notification": {
-                        "name": "Maintenance Scheduled",
-                        "description": "The platform will be undergoing maintenance on Wednesday at 2am. Please plan accordingly.",
-                        "type": "maintenance",
-                        "author_name": "Jane Doe"
-                    }
+                    "notification": "Une notification non lu"
                 }
             ]
         }
-        response.data = data
-        return response
+        return jsonify(data)
 
