@@ -35,7 +35,8 @@ class MongoDBUserRepository(UserRepository):
             "password": hash_password
         }
         self.user_db.insert_one(user)
-        return self.create_token(email)
+
+
 
     def login(self, email: str, password: str) -> str:
         hashed_password = self.calculate_hashed(password)
