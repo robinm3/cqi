@@ -8,7 +8,7 @@ from api.problemController import ProblemsController, NotificationsController
 from api.pingController import PingController
 from api.resource import ApiResource
 from api.taskController import TaskController, TaskIdController
-from api.userController import UserController, LoginController, LogoutController
+from api.userController import UserController, LoginController, LogoutController, MeController
 from api.itemController import LostItemController, FoundItemController
 
 
@@ -27,7 +27,8 @@ routes: list[Type[ApiResource]] = [
     NotificationsController,
     LostItemController,
     FoundItemController,
-    TaskIdController
+    TaskIdController,
+    MeController
 ]
 
 for route in routes:
