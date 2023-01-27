@@ -1,7 +1,7 @@
-from flask import request
+from flask import request, jsonify
 
 from api.resource import ApiResource
-from infra.MongoDBUserRepository import MongoDBUserRepository
+from infra.UserRepository import MongoDBUserRepository
 
 salt = "someSalt"
 db_name = "someDB"
@@ -17,6 +17,10 @@ class SignUpController(ApiResource):
         data = request.get_json()
         return user_repository.sign_up(data['email'], data['password'])
 
+    def put(self):
+        data = request.get_json()
+        return f"User modified with data {data}"
+
 
 class LoginController(ApiResource):
     @staticmethod
@@ -27,6 +31,13 @@ class LoginController(ApiResource):
         data = request.get_json()
         return user_repository.login(data['email'], data['password'])
 
+class MeController(ApiResource):
+    @staticmethod
+    def path():
+        return "/user:me"
+
+    def get(self):
+        return jsonify({'type': 'Organisateur', 'first_name': 'John', 'last_name': 'Doe', 'email': 'fasdfasd@gmail.com'})
 
 class LogoutController(ApiResource):
     @staticmethod

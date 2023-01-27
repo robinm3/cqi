@@ -19,6 +19,7 @@ function App() {
   useEffect(() => {
     const authenticated = async () => {
       const auth = await getUser()
+      console.log(auth)
       setAuthenticated(auth)
     }
     authenticated()
@@ -26,7 +27,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={authenticated}>
+      <UserContext.Provider
+        value={{ user: authenticated, setUser: setAuthenticated }}
+      >
         <Routes>
           <Route path="/" element={<PrivateLayout />}>
             {/* <Route index element={<Home />} /> */}

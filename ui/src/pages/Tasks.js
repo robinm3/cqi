@@ -1,38 +1,38 @@
-import React from 'react'
-import TaskCard from '../components/TaskCard'
-import { getTasks } from '../services/TaskServices'
+import React from "react";
+import TaskCard from "../components/TaskCard";
+import { getTasks } from "../services/TaskServices";
 
 const Tasks = () => {
   // const tasks = getTasks()
   const tasks = [
     {
-      name: 'Vider la poubelle',
-      description: 'Dans le hall',
+      name: "Vider la poubelle",
+      description: "Dans le hall",
       startTime: 1674790852,
       endTime: 1674799852,
     },
     {
-      name: 'Vider la poubelle2',
-      description: 'Dans le hall2',
+      name: "Vider la poubelle2",
+      description: "Dans le hall2",
       startTime: 1674790852,
       endTime: 1674890852,
     },
-  ]
+  ];
 
   const monthNames = [
-    'janvier',
-    'février',
-    'mars',
-    'avril',
-    'mai',
-    'juin',
-    'juillet',
-    'août',
-    'septembre',
-    'octobre',
-    'novenbre',
-    'décembre',
-  ]
+    "janvier",
+    "février",
+    "mars",
+    "avril",
+    "mai",
+    "juin",
+    "juillet",
+    "août",
+    "septembre",
+    "octobre",
+    "novenbre",
+    "décembre",
+  ];
 
   return (
     <div>
@@ -44,7 +44,7 @@ const Tasks = () => {
         .filter((task) => {
           return (
             new Date(task.startTime * 1000).getDate() === new Date().getDate()
-          )
+          );
         })
         .map((task) => (
           <TaskCard task={task} key={task.name} />
@@ -52,13 +52,13 @@ const Tasks = () => {
       <h2 className="text-2xl mb-5">Plus-tard</h2>
       {tasks
         .filter((task) => {
-          return new Date(task.startTime * 1000) > new Date()
+          return new Date(task.startTime * 1000) > new Date();
         })
         .map((task) => (
           <TaskCard task={task} key={task.name} />
         ))}
     </div>
-  )
-}
+  );
+};
 
-export default Tasks
+export default Tasks;
