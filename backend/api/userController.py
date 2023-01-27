@@ -8,7 +8,7 @@ db_name = "someDB"
 user_repository = MongoDBUserRepository(db_name, salt)
 
 
-class SignUpController(ApiResource):
+class UserController(ApiResource):
     @staticmethod
     def path():
         return "/user"
@@ -16,6 +16,13 @@ class SignUpController(ApiResource):
     def post(self):
         data = request.get_json()
         return user_repository.sign_up(data['email'], data['password'])
+
+    def put(self):
+        data = request.get_json()
+        return f"User modified with data {data}"
+
+    def get(self):
+        return [{"userName": "leo", "userId": 69}]
 
 
 class LoginController(ApiResource):
@@ -37,12 +44,3 @@ class LogoutController(ApiResource):
         token = request.headers.get("authorization").replace("Bearer ", "")
         return user_repository.logout(token)
 
-
-class UserController(ApiResource):
-    @staticmethod
-    def path():
-        return "/user:me"
-
-    def get(self):
-        token = request.headers.get("authorization").replace("Bearer ", "")
-        return user_repository.get(token)

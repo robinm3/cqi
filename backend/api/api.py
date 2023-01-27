@@ -7,8 +7,8 @@ from flask_restful import Api
 from api.problemController import ProblemsController, NotificationsController
 from api.pingController import PingController
 from api.resource import ApiResource
-from api.taskController import TaskController
-from api.userController import UserController, SignUpController, LoginController, LogoutController
+from api.taskController import TaskController, TaskIdController
+from api.userController import UserController, LoginController, LogoutController
 from api.itemController import LostItemController, FoundItemController
 
 
@@ -19,15 +19,15 @@ api = Api(app)
 
 routes: list[Type[ApiResource]] = [
     PingController,
-    SignUpController,
+    UserController,
     LoginController,
     LogoutController,
-    UserController,
     TaskController,
     ProblemsController,
     NotificationsController,
     LostItemController,
-    FoundItemController
+    FoundItemController,
+    TaskIdController
 ]
 
 for route in routes:
