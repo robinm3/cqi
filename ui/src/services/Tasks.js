@@ -57,6 +57,7 @@ export const getTasks = async () => {
       },
     })
     .then((response) => {
+      console.log(JSON.parse(response.data))
       return JSON.parse(response.data)
     })
     .catch((error) => {})
