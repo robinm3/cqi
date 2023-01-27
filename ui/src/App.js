@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import { getUser } from './services/Login'
 import Tasks from './pages/Tasks'
 import Reports from './pages/Reports'
+import LostObj from './pages/LostObj'
 
 function App() {
   const [authenticated, setAuthenticated] = useState('')
@@ -18,6 +19,7 @@ function App() {
   useEffect(() => {
     const authenticated = async () => {
       const auth = await getUser()
+      console.log(auth)
       setAuthenticated(auth)
     }
     authenticated()
@@ -25,13 +27,16 @@ function App() {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={authenticated}>
+      <UserContext.Provider
+        value={{ user: authenticated, setUser: setAuthenticated }}
+      >
         <Routes>
           <Route path="/" element={<PrivateLayout />}>
             {/* <Route index element={<Home />} /> */}
             <Route path="potato" element={<Potato />} />
             <Route path="tasks" element={<Tasks />} />
             <Route path="reports" element={<Reports />} />
+            <Route path="lostObj" element={<LostObj />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/login" element={<BasicLayout />}>
