@@ -12,7 +12,7 @@ const Login = () => {
     // const auth = await login(email, password);
     /*if (auth) {
     }*/
-    setUser("some@email.com");
+    setUser({ email: "some@email.com", type: "Organisateur" });
     navigate("/");
   };
 
