@@ -104,3 +104,28 @@ class UserRepository:
             return False
         else:
             return True
+
+    def get_user_by_id(self, id):
+        user = self.user_db.find_one({
+            "_id": id
+        })
+        return user
+
+    def is_notification_read(self, idProblem, token):
+        user = self.get(token)
+
+        query = {"email": user["email"], "unreadNotification": {"$in": [idProblem]}}
+
+        something = self.user_db.find_one(query)
+
+        if not something:
+            return False
+        return True
+
+    def add_notification(self):
+
+        update = {"$push": {"unreadNotification": "some_id"}}
+
+        # Update all documents in the collection
+        self.user_db.update_many({}, update)
+
