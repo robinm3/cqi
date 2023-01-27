@@ -50,8 +50,7 @@ class UserRepository:
 
     def get_all_users(self):
         users = list(self.user_db.find())
-        users_json = json.dumps(users, default=str)
-        return users_json
+        return users
 
 
     def login(self, email: str, password: str) -> str:
@@ -135,6 +134,4 @@ class UserRepository:
 
     def is_admin(self, token):
         user = self.get(token)
-        if user["type"] == "Organisateur":
-            return True
-        return False
+        return user["type"] == "Organisateur"
