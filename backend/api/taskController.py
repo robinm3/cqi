@@ -39,9 +39,10 @@ class TaskController(ApiResource):
 class TaskIdController(ApiResource):
     @staticmethod
     def path():
-        return "/task/<int:task_id>"
+        return "/task/<string:task_id>"
 
     def delete(self, task_id):
+        task_repository.delete(task_id)
         return f"Task {task_id} deleted"
 
     def put(self, task_id):
