@@ -3,21 +3,21 @@ import TaskCard from '../components/TaskCard'
 import { getTasks } from '../services/TaskServices'
 
 const Tasks = () => {
-  // const tasks = getTasks()
-  const tasks = [
-    {
-      name: 'Vider la poubelle',
-      description: 'Dans le hall',
-      startTime: 1674850852,
-      endTime: 1674799852,
-    },
-    {
-      name: 'Vider la poubelle2',
-      description: 'Dans le hall2',
-      startTime: 1674790852,
-      endTime: 1674890852,
-    },
-  ]
+  const tasks = getTasks()
+  // const tasks = [
+  //   {
+  //     name: 'Vider la poubelle',
+  //     description: 'Dans le hall',
+  //     startTime: 1674850852,
+  //     endTime: 1674799852,
+  //   },
+  //   {
+  //     name: 'Vider la poubelle2',
+  //     description: 'Dans le hall2',
+  //     startTime: 1674790852,
+  //     endTime: 1674890852,
+  //   },
+  // ]
 
   const monthNames = [
     'janvier',

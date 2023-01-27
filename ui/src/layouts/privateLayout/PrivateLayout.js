@@ -9,7 +9,7 @@ const PrivateLayout = () => {
   const navigate = useNavigate()
   const { user, setUser } = useUserContext()
   const [clicked, setClicked] = useState(false)
-  console.log(user)
+  // console.log(user)
 
   const handleLogout = async () => {
     if (user) {
@@ -45,7 +45,10 @@ const PrivateLayout = () => {
         <div>
           <nav className="bg-blue-400 p-4 flex justify-between">
             <nav className="bg-blue-400 p-6 flex justify-between ">
-              <button class="lg:hidden" onClick={() => setClicked(!clicked)}>
+              <button
+                className="lg:hidden"
+                onClick={() => setClicked(!clicked)}
+              >
                 <FaList />
               </button>
               <div className="hidden lg:flex">
@@ -56,7 +59,7 @@ const PrivateLayout = () => {
                 <button onClick={handleLogout}>Logout</button>
               </ul>
             </nav>
-            {clicked && <nav class="lg:hidden">{navigation()}</nav>}
+            {clicked && <nav className="lg:hidden">{navigation()}</nav>}
           </nav>
 
           <div className="p-10">
