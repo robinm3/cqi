@@ -10,6 +10,7 @@ export const getTasks = async () => {
       },
     })
     .then((data) => {
+      // console.log(data.data)
       return data.data
     })
   return response.message

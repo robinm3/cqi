@@ -1,16 +1,17 @@
-import { api } from "./api";
+import { api } from './api'
+import Cookies from 'js-cookie'
 
 export const createTask = async (
-  token,
   name,
   description,
   startTime,
   endTime,
   volunteerId
 ) => {
+  const token = Cookies.get('token')
   const taskResponse = await api
     .post(
-      "task",
+      'task',
       JSON.stringify({
         name,
         description,
@@ -20,71 +21,74 @@ export const createTask = async (
       }),
       {
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
           authorization: token,
         },
       }
     )
     .then((response) => {
-      return JSON.parse(response.data);
+      return JSON.parse(response.data)
     })
-    .catch((error) => {});
-  return taskResponse;
-};
+    .catch((error) => {})
+  return taskResponse
+}
 
-export const getUsers = async (token) => {
+export const getUsers = async () => {
+  const token = Cookies.get('token')
   const taskResponse = await api
-    .get("user", {
+    .get('user', {
       headers: {
         authorization: token,
       },
     })
     .then((response) => {
-      return JSON.parse(response.data);
+      return JSON.parse(response.data)
     })
-    .catch((error) => {});
-  return taskResponse;
-};
+    .catch((error) => {})
+  return taskResponse
+}
 
 export const getTasks = async () => {
+  const token = Cookies.get('token')
   const taskResponse = await api
-    .get("task", {
+    .get('task', {
       headers: {
         authorization: token,
       },
     })
     .then((response) => {
-      return JSON.parse(response.data);
+      return JSON.parse(response.data)
     })
-    .catch((error) => {});
-  return taskResponse;
-};
+    .catch((error) => {})
+  return taskResponse
+}
 
 export const deleteTask = async (taskId) => {
+  const token = Cookies.get('token')
   const taskResponse = await api
-    .delete("task/" + taskId, {
+    .delete('task/' + taskId, {
       headers: {
         authorization: token,
       },
     })
     .then((response) => {
-      return JSON.parse(response.data);
+      return JSON.parse(response.data)
     })
-    .catch((error) => {});
-  return taskResponse;
-};
+    .catch((error) => {})
+  return taskResponse
+}
 
 export const putTask = async (
-  token,
   name,
   description,
   startTime,
   endTime,
   volunteerId
 ) => {
+  const token = Cookies.get('token')
   const taskResponse = await api
     .put(
-      "task",
+      'task',
       JSON.stringify({
         name,
         description,
@@ -94,14 +98,14 @@ export const putTask = async (
       }),
       {
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
           authorization: token,
         },
       }
     )
     .then((response) => {
-      return JSON.parse(response.data);
+      return JSON.parse(response.data)
     })
-    .catch((error) => {});
-  return taskResponse;
-};
+    .catch((error) => {})
+  return taskResponse
+}
