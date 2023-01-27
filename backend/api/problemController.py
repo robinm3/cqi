@@ -21,7 +21,9 @@ class ProblemsController(ApiResource):
 
         data = request.get_data()
         problem = Problem(data['name'], data['description'], data['type'], data['userId'])
-        return problem_repository.create_problem(problem)
+        bdProblem = problem_repository.create_problem(problem)
+        user_repository.add_notification(bdProblem.inserted_id)
+        return {"message": "Problem created"}, 200
 
 
 class NotificationsController(ApiResource):
@@ -30,17 +32,22 @@ class NotificationsController(ApiResource):
         return "/notifications"
 
     def get(self):
-        data = {
-            "notifications": [
-                {
-                    "is_read": False,
-                    "notification": "Une notification lu"
-                },
-                {
-                    "is_read": True,
-                    "notification": "Une notification non lu"
-                }
-            ]
-        }
-        return jsonify(data)
+        if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Token invalide"}, 400
+
+        notifications = problem_repository.get_notifications()
+        transformed_notifications = []
+        for notification in notifications:
+            user = user_repository.get_user_by_id(notification["userId"])
+            transformed_problem = {
+                "name": notification["name"],
+                "description": notification["description"],
+                "type": notification["type"],
+                "userFirstName": user["firstName"],
+                "userLastName": user["lastName"],
+                "read": user_repository.is_notification_read(notification["_id"], request.headers.get("authorization").replace("Bearer ", ""))
+            }
+            transformed_notifications.append(transformed_problem)
+
+        return
 

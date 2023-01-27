@@ -8,7 +8,7 @@ client = MongoClient(MONGO_HOST)
 class ProblemsRepository:
     def __init__(self):
         database = client[DB_NAME]
-        self.credentials_db = database['credentials']
+        self.problem_db = database['problem']
 
     def create_problem(self, problem):
         problem = {
@@ -18,4 +18,8 @@ class ProblemsRepository:
             "userId": problem.userId
         }
 
-        return self.credentials_db.insert_one(problem)
+        return self.problem_db.insert_one(problem)
+
+    def get_notifications(self):
+        notifications = list(self.problem_db.find())
+        return notifications
