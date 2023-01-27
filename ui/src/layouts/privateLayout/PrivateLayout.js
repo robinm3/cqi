@@ -6,7 +6,6 @@ import NavButton from "./NavButton";
 const PrivateLayout = () => {
   const navigate = useNavigate();
   const { user, setUser } = useUserContext();
-  console.log(user);
 
   const handleLogout = async () => {
     if (user) {
@@ -22,10 +21,12 @@ const PrivateLayout = () => {
         <Navigate to={{ pathname: "/login" }} />
       ) : (
         <div>
-          <nav className="bg-blue-400 p-6">
+          <nav className="bg-blue-400 p-6 flex row justify-between ">
             <ul className="flex row justify-around">
-              <NavButton to="/tasks">Mes taches</NavButton>
+              <NavButton to="/tasks">Mes tâches</NavButton>
               <NavButton to="/reports">Rapports</NavButton>
+            </ul>
+            <ul className="flex row justify-around">
               <button onClick={handleLogout}>Logout</button>
             </ul>
           </nav>

@@ -15,13 +15,13 @@ function App() {
   const [authenticated, setAuthenticated] = useState("");
 
   useEffect(() => {
-    const authenticated = async () => {
+    const authentication = async () => {
       if (!authenticated) {
         const auth = await getUser();
         setAuthenticated(auth);
       }
     };
-    authenticated();
+    authentication();
   }, []);
 
   return (
