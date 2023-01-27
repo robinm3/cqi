@@ -1,4 +1,5 @@
 import hashlib
+import json
 import uuid
 from typing import List
 
@@ -20,12 +21,8 @@ class TaskRepository:
     def save(self, task: Task) -> None:
         self.task_db.insert_one(task.__dict__)
 
-    def findAll(self) -> List[Task]:
-        db_content = self.task_db.find()
-        tasks = []
-        for content in db_content:
-            task = Task(content['name'], content['description'], content['startTime'], content['endTime'], content['userId'])
-            tasks.append(task)
+    def findAll(self) -> List:
+        tasks = list(self.task_db.find())
         return tasks
 
     def delete(self, taskId: int) -> None:

@@ -1,3 +1,4 @@
+import json
 from time import time
 
 from flask import request
@@ -21,7 +22,9 @@ class TaskController(ApiResource):
         return data
 
     def get(self):
-        return [task.__dict__ for task in task_repository.findAll()]
+        tasks = task_repository.findAll()
+        tasks_json = json.dumps(tasks, default=str)
+        return tasks_json
 
     def is_valid_task_format(self, data):
         try:
