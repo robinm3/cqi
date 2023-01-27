@@ -18,13 +18,22 @@ class UserRepository:
         self.tokens_db = database['tokens']
         self.salt = SALT
 
-    def get(self, token: str) -> str:
-        user = self.tokens_db.find_one({
+    def get(self, token):
+        credentials = self.tokens_db.find_one({
             "token": token
         })
-        if not user:
-            raise RuntimeError("No user")
-        return user.get('email')
+
+        if not credentials or credentials.get('timestamp') > datetime.datetime.now():
+            if credentials.get('timestamp') > datetime.datetime.now():
+                self.tokens_db.delete_one({"token": token})
+            return {"error": "Token invalide"}, 400
+        else:
+            return self.user_db.find_one({"email":credentials['email']})
+
+    def update_mdp(self, password, token):
+        hash_password = self.calculate_hashed(password)
+        user = self.get(token)
+        self.user_db.update_one({"email": user['email']}, {"$set": {"password": hash_password}})
 
     def create_account(self, userDomaine: User) -> str:
         password = generate_random_string(10)
@@ -60,7 +69,7 @@ class UserRepository:
         self.tokens_db.delete_one({
             "token": token
         }
-        )
+    )
 
     def calculate_hashed(self, password):
         dataBase_password = password + self.salt
@@ -90,6 +99,8 @@ class UserRepository:
         })
 
         if not credentials or credentials.get('timestamp') > datetime.datetime.now():
-            return {"error": "Token invalide"}, 400
+            if credentials.get('timestamp') > datetime.datetime.now():
+                self.tokens_db.delete_one({"token": token})
+            return False
         else:
-            return self.user_db.find_one({"email":credentials['email']})
+            return True
