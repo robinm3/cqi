@@ -1,10 +1,11 @@
 import hashlib
 import uuid
 
+from domain.constants import MONGO_HOST
 from services.UserRepository import UserRepository
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://root:CrdUhS7fq3s9AIDOI2hB@54.88.215.35:27017")
+client = MongoClient(MONGO_HOST)
 
 
 class MongoDBUserRepository(UserRepository):
