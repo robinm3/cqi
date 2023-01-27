@@ -19,7 +19,7 @@ class LostItemRepository:
         items = list(self.lostItem_db.find())
         return items
 
-    def envoyerEmailenvoyerEmail(self, id):
+    def envoyerEmail(self, id):
         item = self.lostItem_db.find_one({"_id": id})
         message = f"<span>Un objet que vous avez perdu a été trouvé. Veuillez vous rendre au centre d'aide au festival pour le retrouver.</span>"
         subject = "Objet trouvé"
