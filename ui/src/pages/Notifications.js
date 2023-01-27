@@ -11,12 +11,11 @@ const Notifications = () => {
     }
     fetchNotifications()
   }, [])
-  
 
   return (
     <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
       {notifications.map((notif) => (
-        <NotificationCard notif={notif} />
+        <NotificationCard notif={notif} key={notif._id} />
       ))}
     </div>
   )

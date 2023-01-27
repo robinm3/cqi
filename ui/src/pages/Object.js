@@ -26,7 +26,7 @@ const Object = () => {
         <h2 className="text-2xl">Objets trouvés</h2>
         <div className="flex flex-col gap-4 mt-4">
           {foundItem.map((obj) => (
-            <ObjectCard obj={obj} key={obj.foundTime} found={true} />
+            <ObjectCard obj={obj} key={obj._id} found={true} />
           ))}
         </div>
       </div>
@@ -34,7 +34,7 @@ const Object = () => {
         <h2 className="text-2xl">Objets perdus</h2>
         <div className="flex flex-col gap-4 mt-4">
           {lostItem.map((obj) => (
-            <ObjectCard obj={obj} key={obj.lostTime} found={false} />
+            <ObjectCard obj={obj} key={obj._id} found={false} />
           ))}
         </div>
       </div>
