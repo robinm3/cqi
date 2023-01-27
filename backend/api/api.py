@@ -1,13 +1,15 @@
 from typing import Type
 
 from flask import Flask
-from flask_restful import Api
 from flask_cors import CORS
+from flask_restful import Api
 
+from api.problemController import ProblemsController
 from api.pingController import PingController
 from api.resource import ApiResource
-from api.userController import UserController, SignUpController, LoginController, LogoutController
 from api.taskController import TaskController
+from api.userController import UserController, SignUpController, LoginController, LogoutController
+
 
 app = Flask(__name__)
 CORS(app)
@@ -20,7 +22,8 @@ routes: list[Type[ApiResource]] = [
     LoginController,
     LogoutController,
     UserController,
-    TaskController
+    TaskController,
+    ProblemsController
 ]
 
 for route in routes:
