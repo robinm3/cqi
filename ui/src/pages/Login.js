@@ -5,7 +5,7 @@ import { login } from "../services/Auth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -29,6 +29,9 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  if (user) {
+    navigate("/");
+  }
   return (
     <div>
       <div className="flex m-5  h-screen place-items-center justify-center">
