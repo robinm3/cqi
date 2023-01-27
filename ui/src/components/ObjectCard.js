@@ -40,7 +40,11 @@ const ObjectCard = ({ obj, found }) => {
         {' - '}
         {date.getDate()} {monthNames[date.getMonth()]}{' '}
       </p>
-      {!found ? <a onClick={clickHandler}>{obj.email}</a> : null}
+      {!found ? (
+        <a onClick={clickHandler} className="hover:shadow hover:text-blue-600">
+          {obj.email}
+        </a>
+      ) : null}
     </div>
   )
 }
