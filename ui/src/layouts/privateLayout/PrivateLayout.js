@@ -22,13 +22,20 @@ const PrivateLayout = () => {
         <Navigate to={{ pathname: '/login' }} />
       ) : (
         <div>
-          <nav className="bg-blue-400 p-6 flex row justify-between ">
-            <ul className="flex row justify-around">
+          <nav className="bg-blue-400 p-6 flex justify-between ">
+            <ul className="flex justify-around align-middle">
               <NavButton to="/tasks">Mes tâches</NavButton>
               <NavButton to="/reports">Rapports</NavButton>
-              <NavButton to="/notifications">Notifications</NavButton>
             </ul>
-            <ul className="flex row justify-around">
+            <ul className="flex justify-around">
+              <NavButton to="/notifications">
+                {/* <svg
+                  src={require('../../icons/bell.png')}
+                  className="w-7 h-7"
+                  alt="bell"
+                /> */}
+                Notifications
+              </NavButton>
               <button onClick={handleLogout}>Logout</button>
             </ul>
           </nav>
