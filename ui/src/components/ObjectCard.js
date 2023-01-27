@@ -1,7 +1,7 @@
 import React from 'react'
+import { updateEmail } from '../services/Objets'
 
 const ObjectCard = ({ obj, found }) => {
-  console.log(obj)
   let date = new Date()
   if (found) {
     date = new Date(obj.foundTime)
@@ -23,6 +23,14 @@ const ObjectCard = ({ obj, found }) => {
     'novenbre',
     'décembre',
   ]
+
+  const clickHandler = () => {
+    updateEmailAPI(obj._id)
+  }
+
+  const updateEmailAPI = async (id) => {
+    const _ = await updateEmail(id)
+  }
   return (
     <div className="rounded shadow p-5 m-5 ">
       <h3 className="font-bold">{obj.name}</h3>
@@ -32,7 +40,7 @@ const ObjectCard = ({ obj, found }) => {
         {' - '}
         {date.getDate()} {monthNames[date.getMonth()]}{' '}
       </p>
-      {!found ? <p>{obj.email}</p> : null}
+      {!found ? <a onClick={clickHandler}>{obj.email}</a> : null}
     </div>
   )
 }

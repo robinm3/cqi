@@ -30,3 +30,25 @@ export const getFoundItem = async () => {
     .catch((error) => {})
   return taskResponse
 }
+
+export const updateEmail = async (id) => {
+  const token = Cookies.get('token')
+
+  const userResponse = await api
+    .put(
+      'lostItem',
+      JSON.stringify({
+        id,
+      }),
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: token,
+        },
+      }
+    )
+    .then((response) => {
+      return response.data
+    })
+  return userResponse
+}
