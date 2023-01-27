@@ -13,16 +13,16 @@ import Tasks from './pages/Tasks'
 import Reports from './pages/Reports'
 
 function App() {
-  const [authenticated, setAuthenticated] = useState('')
+  const [authenticated, setAuthenticated] = useState('s')
 
-  useEffect(() => {
-    const authenticated = async () => {
-      const auth = await getUser()
-      console.log(auth)
-      setAuthenticated(auth)
-    }
-    authenticated()
-  })
+  // useEffect(() => {
+  //   const authenticated = async () => {
+  //     const auth = await getUser()
+  //     console.log(auth)
+  //     setAuthenticated(auth)
+  //   }
+  //   authenticated()
+  // })
 
   return (
     <BrowserRouter>
