@@ -2,7 +2,6 @@ import React from 'react'
 
 const NewLostObj = (props) => {
   const submitNewLostObjHandler = (e) => {
-    e.preventDefault()
     props.onSubmit(e, 'lostObj')
   }
 

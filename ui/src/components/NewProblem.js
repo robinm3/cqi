@@ -2,7 +2,6 @@ import React from 'react'
 
 const NewProblem = (props) => {
   const submitHandler = (e) => {
-    e.preventDefault()
     props.onSubmit(e, 'problem')
   }
   return (

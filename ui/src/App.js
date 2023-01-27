@@ -1,30 +1,31 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import PrivateLayout from "./layouts/privateLayout/PrivateLayout";
-import NotFound from "./pages/NotFound";
-import Potato from "./pages/Potato";
-import Login from "./pages/Login";
-import BasicLayout from "./layouts/basicLayout/BasicLayout";
-import { UserContext } from "./contexts/userContext";
-import { useEffect, useState } from "react";
-import { getUser } from "./services/Login";
-import Tasks from "./pages/Tasks";
-import Reports from "./pages/Reports";
-import UserCreation from "./pages/UserCreation";
-import Notifications from "./pages/Notifications";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
+import PrivateLayout from './layouts/privateLayout/PrivateLayout'
+import NotFound from './pages/NotFound'
+import Potato from './pages/Potato'
+import Login from './pages/Login'
+import BasicLayout from './layouts/basicLayout/BasicLayout'
+import { UserContext } from './contexts/userContext'
+import { useEffect, useState } from 'react'
+import { getUser } from './services/Login'
+import Tasks from './pages/Tasks'
+import Reports from './pages/Reports'
+import UserCreation from './pages/UserCreation'
+import Notifications from './pages/Notifications'
+import Object from './pages/Object'
 
 function App() {
-  const [authenticated, setAuthenticated] = useState("");
+  const [authenticated, setAuthenticated] = useState('')
 
   useEffect(() => {
     const authentication = async () => {
       if (!authenticated) {
-        const auth = await getUser();
-        setAuthenticated(auth);
+        const auth = await getUser()
+        setAuthenticated(auth)
       }
-    };
-    authentication();
-  }, []);
+    }
+    authentication()
+  }, [])
 
   return (
     <BrowserRouter>
@@ -39,6 +40,7 @@ function App() {
             <Route path="reports" element={<Reports />} />
             <Route path="notifications" element={<Notifications />} />
             <Route path="userCreation" element={<UserCreation />} />
+            <Route path="object" element={<Object />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/login" element={<BasicLayout />}>
@@ -47,7 +49,7 @@ function App() {
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
