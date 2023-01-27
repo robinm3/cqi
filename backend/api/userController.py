@@ -1,8 +1,13 @@
 from flask import request, jsonify
 
 from api.resource import ApiResource
+<<<<<<< HEAD
+from infra.UserRepository import UserRepository
+from domain.user import User
+=======
 from infra.userRepository import UserRepository
 
+>>>>>>> eaf812cb5b46a894ee62a3db8d9026674f7ba648
 user_repository = UserRepository()
 
 class UserController(ApiResource):
@@ -12,14 +17,18 @@ class UserController(ApiResource):
 
     def post(self):
         data = request.get_json()
-        return user_repository.create_account(data['email'], data['first_name'], data['last_name'], data['type'])
+        user = User(data['type'], data['firstName'], data['lastName'], data['email'])
+        if(user_repository.user_exist(user.email)):
+            return {"error": "User already exists"}, 400
+
+        user_repository.create_account(user)
 
     def put(self):
         data = request.get_json()
         return f"User modified with data {data}"
 
     def get(self):
-        return [{"id": 69, "userName": "leo", "userId": 69}]
+        return user_repository.get_all_users()
 
 
 class LoginController(ApiResource):
@@ -29,6 +38,9 @@ class LoginController(ApiResource):
 
     def post(self):
         data = request.get_json()
+        if (not user_repository.user_exist(data['email'])):
+            return {"error": "Courriel invalide"}, 400
+
         return user_repository.login(data['email'], data['password'])
 
 class MeController(ApiResource):
