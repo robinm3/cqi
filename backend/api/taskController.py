@@ -24,32 +24,14 @@ class TaskController(ApiResource):
         data =[ {'id': 1, 'name': 'task1', 'description': 'qqch', 'startTime': time(), 'endTime': time(), 'volonteerId': 1}]
         return data
 
-
-class LoginController(ApiResource):
+class TaskIdController(ApiResource):
     @staticmethod
     def path():
-        return "/user:login"
+        return "/task/<int:task_id>"
 
-    def post(self):
+    def delete(self, task_id):
+        return f"Task {task_id} deleted"
+
+    def put(self, task_id):
         data = request.get_json()
-        return user_repository.login(data['email'], data['password'])
-
-
-class LogoutController(ApiResource):
-    @staticmethod
-    def path():
-        return "/user:logout"
-
-    def post(self):
-        token = request.headers.get("authorization").replace("Bearer ", "")
-        return user_repository.logout(token)
-
-
-class UserController(ApiResource):
-    @staticmethod
-    def path():
-        return "/user:me"
-
-    def get(self):
-        token = request.headers.get("authorization").replace("Bearer ", "")
-        return user_repository.get(token)
+        return f"Task {task_id} modified with data: {data}"
