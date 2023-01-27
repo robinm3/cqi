@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <div>
       <div className="flex m-5  h-screen place-items-center justify-center">
-        <form className="flex flex-col text-lg bg-blue-100 p-10 rounded-lg">
+        <div className="flex flex-col text-lg bg-blue-100 p-10 rounded-lg">
           <label>Email</label>
           <input type="email" onChange={onChangeEmail} className="mb-5 mt-3" />
           <label>Password</label>
@@ -48,7 +48,7 @@ const Login = () => {
             Login
           </button>
           {error && <p>Invalid credentials</p>}
-        </form>
+        </div>
       </div>
     </div>
   );

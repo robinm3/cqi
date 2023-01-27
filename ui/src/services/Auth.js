@@ -5,12 +5,12 @@ export const signUp = async (email, firstName, lastName, type) => {
   const userResponse = await api
     .post(
       "user",
-      {
+      JSON.stringify({
         email,
         type,
         firstName,
         lastName,
-      },
+      }),
       {
         headers: {
           "content-type": "application/json",
@@ -29,9 +29,9 @@ export const updatePassword = async (newPassword) => {
   const userResponse = await api
     .put(
       "user",
-      {
+      JSON.stringify({
         newMdp: newPassword,
-      },
+      }),
       {
         headers: {
           "content-type": "application/json",
@@ -50,10 +50,10 @@ export const login = async (email, password) => {
   const userResponse = await api
     .post(
       "user:login",
-      {
+      JSON.stringify({
         email: email,
         password: password,
-      },
+      }),
       {
         headers: {
           "content-type": "application/json",
@@ -64,6 +64,7 @@ export const login = async (email, password) => {
       return response.data;
     })
     .catch((error) => {});
+
   Cookies.set("token", userResponse, { secure: false });
   const user = await getUser();
   return user;
