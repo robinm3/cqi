@@ -9,10 +9,13 @@ const Login = () => {
   const { setUser } = useContext(UserContext);
 
   const loginAsDefaultUser = async () => {
-    await login("some@email.com", "12345");
-    setUser("some@email.com");
-    navigate("/");
+    const auth = await login("some@email.com", "12345");
+    if (auth) {
+      setUser("some@email.com");
+      navigate("/");
+    }
   };
+
   return (
     <div>
       <h1 className="text-3xl font-bold underline">Login</h1>
