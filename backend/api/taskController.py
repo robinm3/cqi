@@ -3,7 +3,7 @@ from time import time
 from flask import request
 
 from api.resource import ApiResource
-from infra.MongoDBUserRepository import MongoDBUserRepository
+from infra.UserRepository import MongoDBUserRepository
 
 salt = "someSalt"
 db_name = "someDB"

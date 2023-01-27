@@ -1,7 +1,7 @@
 from flask import request
 
 from api.resource import ApiResource
-from infra.MongoDBUserRepository import MongoDBUserRepository
+from infra.UserRepository import MongoDBUserRepository
 
 salt = "someSalt"
 db_name = "someDB"
@@ -22,7 +22,7 @@ class UserController(ApiResource):
         return f"User modified with data {data}"
 
     def get(self):
-        return [{"userName": "leo", "userId": 69}]
+        return [{"id": 69, "userName": "leo", "userId": 69}]
 
 
 class LoginController(ApiResource):
