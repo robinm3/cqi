@@ -1,9 +1,6 @@
 from flask import jsonify, request
 
 from api.resource import ApiResource
-from infra.UserRepository import UserRepository
-
-user_repository = UserRepository()
 
 class PingController(ApiResource):
     @staticmethod
@@ -11,7 +8,6 @@ class PingController(ApiResource):
         return "/ping"
 
     def get(self):
-        user = user_repository.verify_token(request.headers.get("authorization").replace("Bearer ", ""))
         return jsonify({'message': 'hello world'})
 
     def post(self):
