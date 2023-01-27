@@ -4,7 +4,7 @@ import uuid
 from services.UserRepository import UserRepository
 from pymongo import MongoClient
 
-client = MongoClient("mongodb+srv://h21:mPythonMongo@cluster0.f9ba0.mongodb.net/?retryWrites=true&w=majority")
+client = MongoClient("mongodb://root:CrdUhS7fq3s9AIDOI2hB@54.88.215.35:27017")
 
 
 class MongoDBUserRepository(UserRepository):
