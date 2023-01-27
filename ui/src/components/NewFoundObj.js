@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const NewFoundObj = (props) => {
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [date, setDate] = useState('')
   const submitNewLostObjHandler = (e) => {
-    props.onSubmit(e, 'foundObj')
+    if (name && description && date) {
+      e.preventDefault()
+      props.onSubmit(
+        [name, description, new Date(date).getTime() / 1000],
+        'foundObj'
+      )
+      setName('')
+      setDescription('')
+      setDate('')
+    }
   }
 
   return (
@@ -19,6 +31,10 @@ const NewFoundObj = (props) => {
             id="name"
             placeholder="Nom"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value)
+            }}
           />
           <label htmlFor="description">Description</label>
           <textarea
@@ -28,6 +44,10 @@ const NewFoundObj = (props) => {
             rows="10"
             placeholder="Description"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value)
+            }}
           ></textarea>
           <label htmlFor="time">Moment</label>
           <input
@@ -35,6 +55,10 @@ const NewFoundObj = (props) => {
             name="time"
             id="time"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={date}
+            onChange={(e) => {
+              setDate(e.target.value)
+            }}
           />
 
           <button

@@ -4,13 +4,13 @@ import NewLostObj from '../components/NewLostObj'
 import NewFoundObj from '../components/NewFoundObj'
 
 const Reports = () => {
-  const submitHandler = (e, type) => {
+  const submitHandler = (values, type) => {
     if (type === 'problem') {
-      //call api post problem
+      const [name, description, type] = values
     } else if (type === 'lostObj') {
-      //call api post lostItem
+      const [name, description, date, contact] = values
     } else if (type === 'foundObj') {
-      //call api post foundItem
+      const [name, description, date] = values
     }
   }
   const [currentForm, setCurrentForm] = useState(

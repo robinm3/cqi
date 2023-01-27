@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const NewProblem = (props) => {
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [type, setType] = useState('organisateur')
+
   const submitHandler = (e) => {
-    props.onSubmit(e, 'problem')
+    e.preventDefault()
+    if (name && description) {
+      props.onSubmit([name, description, type], 'problem')
+      setName('')
+      setDescription('')
+      setType('organisateur')
+    }
   }
   return (
     <>
@@ -18,6 +28,10 @@ const NewProblem = (props) => {
             id="name"
             placeholder="Nom"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value)
+            }}
           />
           <label htmlFor="description">Description</label>
           <textarea
@@ -27,12 +41,20 @@ const NewProblem = (props) => {
             rows="10"
             placeholder="Description"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value)
+            }}
           ></textarea>
           <label htmlFor="type">Type</label>
           <select
             name="type"
             id="type"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={type}
+            onChange={(e) => {
+              setType(e.target.value)
+            }}
           >
             <option value="organisateur">Organisateur</option>
             <option value="benevole">Bénévole</option>

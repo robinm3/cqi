@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const NewLostObj = (props) => {
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [date, setDate] = useState('')
+  const [contact, setContact] = useState('')
+
   const submitNewLostObjHandler = (e) => {
-    props.onSubmit(e, 'lostObj')
+    e.preventDefault()
+    if (name && description && date && contact) {
+      props.onSubmit(
+        [name, description, new Date(date).getTime() / 1000, contact],
+        'lostObj'
+      )
+      setName('')
+      setDescription('')
+      setDate('')
+      setContact('')
+    }
   }
 
   return (
@@ -19,6 +34,10 @@ const NewLostObj = (props) => {
             id="name"
             placeholder="Nom"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value)
+            }}
           />
           <label htmlFor="description">Description</label>
           <textarea
@@ -28,6 +47,10 @@ const NewLostObj = (props) => {
             rows="10"
             placeholder="Description"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value)
+            }}
           ></textarea>
           <label htmlFor="time">Moment</label>
           <input
@@ -35,6 +58,10 @@ const NewLostObj = (props) => {
             name="time"
             id="time"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={date}
+            onChange={(e) => {
+              setDate(e.target.value)
+            }}
           />
           <label htmlFor="contact">Contact</label>
           <input
@@ -43,6 +70,10 @@ const NewLostObj = (props) => {
             id="contact"
             placeholder="Contact"
             className="border-2 border-gray-300 p-2 rounded-md"
+            value={contact}
+            onChange={(e) => {
+              setContact(e.target.value)
+            }}
           />
 
           <button
