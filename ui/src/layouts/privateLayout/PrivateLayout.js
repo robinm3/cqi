@@ -33,7 +33,7 @@ const PrivateLayout = () => {
                 <NavButton to="/object">Objet perdu</NavButton>
               )}
               {user.type === 'Organisateur' && (
-                <NavButton to="/createTask">Nouvelle tâche</NavButton>
+                <NavButton to="/createTask">Gérer tâches</NavButton>
               )}
             </ul>
             <ul className="flex justify-around">
