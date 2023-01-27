@@ -1,13 +1,9 @@
 from flask import request, jsonify
 
 from api.resource import ApiResource
-<<<<<<< HEAD
-from infra.UserRepository import UserRepository
-from domain.user import User
-=======
 from infra.userRepository import UserRepository
+from domain.user import User
 
->>>>>>> eaf812cb5b46a894ee62a3db8d9026674f7ba648
 user_repository = UserRepository()
 
 class UserController(ApiResource):
