@@ -13,6 +13,7 @@ import Reports from './pages/Reports'
 import UserCreation from './pages/UserCreation'
 import Notifications from './pages/Notifications'
 import Object from './pages/Object'
+import CreateTask from './pages/CreateTask'
 
 function App() {
   const [authenticated, setAuthenticated] = useState('')
@@ -40,6 +41,7 @@ function App() {
             <Route path="reports" element={<Reports />} />
             <Route path="notifications" element={<Notifications />} />
             <Route path="userCreation" element={<UserCreation />} />
+            <Route path="createTask" element={<CreateTask />} />
             <Route path="object" element={<Object />} />
             <Route path="*" element={<NotFound />} />
           </Route>

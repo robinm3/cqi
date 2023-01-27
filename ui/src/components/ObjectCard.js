@@ -20,10 +20,11 @@ const ObjectCard = ({ obj }) => {
       <h3 className="font-bold">{obj.name}</h3>
       <p className="text-left">{obj.description}</p>
       <p className="text-left">
-        {new Date(obj.time * 1000).getDate()}{' '}
-        {monthNames[new Date(obj.time * 1000).getDay()]}{' '}
         {new Date(obj.time * 1000).getHours()}:
         {new Date(obj.time * 1000).getMinutes()}
+        {' - '}
+        {new Date(obj.time * 1000).getDate()}{' '}
+        {monthNames[new Date(obj.time * 1000).getMonth()]}{' '}
       </p>
     </div>
   )

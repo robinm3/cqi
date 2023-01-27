@@ -22,8 +22,8 @@ const PrivateLayout = () => {
         <Navigate to={{ pathname: '/login' }} />
       ) : (
         <div>
-          <nav className="bg-blue-400 p-6 flex justify-between ">
-            <ul className="flex justify-around align-middle">
+          <nav className="bg-blue-400 p-6 flex justify-between">
+            <ul className=" flex justify-around align-middle">
               <NavButton to="/tasks">Mes tâches</NavButton>
               <NavButton to="/reports">Rapports</NavButton>
               {user.type === 'Organisateur' && (
@@ -32,16 +32,12 @@ const PrivateLayout = () => {
               {user.type === 'Organisateur' && (
                 <NavButton to="/object">Objet perdu</NavButton>
               )}
+              {user.type === 'Organisateur' && (
+                <NavButton to="/createTask">Nouvelle tâche</NavButton>
+              )}
             </ul>
             <ul className="flex justify-around">
-              <NavButton to="/notifications">
-                {/* <svg
-                  src={require('../../icons/bell.png')}
-                  className="w-7 h-7"
-                  alt="bell"
-                /> */}
-                Notifications
-              </NavButton>
+              <NavButton to="/notifications">Notifications</NavButton>
               <button onClick={handleLogout}>Logout</button>
             </ul>
           </nav>
