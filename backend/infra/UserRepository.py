@@ -2,14 +2,13 @@ import hashlib
 import uuid
 
 from domain.constants import MONGO_HOST
-from services.UserRepository import UserRepository
 from pymongo import MongoClient
 from domain.utilitaire import generate_random_string
 
 client = MongoClient(MONGO_HOST)
 
 
-class MongoDBUserRepository(UserRepository):
+class UserRepository:
     def __init__(self, database_name, salt):
         database = client[database_name]
         self.user_db = database['users']

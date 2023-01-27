@@ -2,9 +2,9 @@ from flask import request, jsonify
 
 from api.resource import ApiResource
 from domain.constants import DB_NAME, SALT
-from infra.UserRepository import MongoDBUserRepository
+from infra.UserRepository import UserRepository
 
-user_repository = MongoDBUserRepository(DB_NAME, SALT)
+user_repository = UserRepository(DB_NAME, SALT)
 
 class UserController(ApiResource):
     @staticmethod
