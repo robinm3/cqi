@@ -9,7 +9,6 @@ const PrivateLayout = () => {
   const navigate = useNavigate();
   const { user, setUser, loading } = useUserContext();
   const [clicked, setClicked] = useState(false);
-  console.log(user);
 
   const handleLogout = async () => {
     if (user) {
@@ -18,20 +17,35 @@ const PrivateLayout = () => {
       setUser("");
     }
   };
+  const handleChangePassword = async () => {
+    if (user) {
+      navigate("/changePassword");
+    }
+  };
 
-  const navigation = (className) => {
+  const navigation = (className, navClassName) => {
     return (
       <ul className={className}>
-        <NavButton to="/tasks">Mes tâches</NavButton>
-        <NavButton to="/reports">Rapports</NavButton>
+        <div className={navClassName}>
+          <NavButton to="/tasks">Mes tâches</NavButton>
+        </div>
+        <div className={navClassName}>
+          <NavButton to="/reports">Rapports</NavButton>
+        </div>
         {user.type === "Organisateur" && (
-          <NavButton to="/userCreation">Création d'utilisateur</NavButton>
+          <div className={navClassName}>
+            <NavButton to="/userCreation">Création d'utilisateur</NavButton>
+          </div>
         )}
         {user.type === "Organisateur" && (
-          <NavButton to="/object">Objet perdu</NavButton>
+          <div className={navClassName}>
+            <NavButton to="/object">Objet perdu</NavButton>
+          </div>
         )}
         {user.type === "Organisateur" && (
-          <NavButton to="/createTask">Nouvelle tâche</NavButton>
+          <div className={navClassName}>
+            <NavButton to="/createTask">Nouvelle tâche</NavButton>
+          </div>
         )}
       </ul>
     );
@@ -54,10 +68,13 @@ const PrivateLayout = () => {
             </div>
             <ul className="flex justify-around">
               <NavButton to="/notifications">Notifications</NavButton>
+              <button onClick={handleChangePassword}>Change password</button>
               <button onClick={handleLogout}>Logout</button>
             </ul>
           </nav>
-          {clicked && <nav class="lg:hidden bg-blue-400">{navigation()}</nav>}
+          {clicked && (
+            <nav class="lg:hidden bg-blue-400 p-4">{navigation("", "m-3")}</nav>
+          )}
 
           <div className="p-10">
             <Outlet />

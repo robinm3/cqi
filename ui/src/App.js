@@ -14,6 +14,7 @@ import UserCreation from "./pages/UserCreation";
 import Notifications from "./pages/Notifications";
 import Object from "./pages/Object";
 import CreateTask from "./pages/CreateTask";
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
   const [authenticated, setAuthenticated] = useState("");
@@ -45,6 +46,7 @@ function App() {
             <Route path="potato" element={<Potato />} />
             <Route path="tasks" element={<Tasks />} />
             <Route path="reports" element={<Reports />} />
+            <Route path="changePassword" element={<ChangePassword />} />
             <Route path="notifications" element={<Notifications />} />
             <Route path="userCreation" element={<UserCreation />} />
             <Route path="createTask" element={<CreateTask />} />
