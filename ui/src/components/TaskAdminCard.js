@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const TaskAdminCard = ({ tache, supprimerHandler }) => {
-  const [open, setOpen] = useState(false)
-  const clickHandler = () => {
-    setOpen(!open)
-  }
+  const [open, setOpen] = useState(false);
+  const clickHandler = () => {};
 
-  const suprimerHandler = () => {
-    supprimerHandler(tache.taskId)
-  }
+  const suprimerHandler = async () => {
+    await supprimerHandler(tache._id["$oid"]);
+  };
 
-  const startTime = new Date(tache.startTime * 1000)
-  const endTime = new Date(tache.endTime * 1000)
+  const startTime = new Date(tache.startTime * 1000);
+  const endTime = new Date(tache.endTime * 1000);
   return (
     <div className="border shadow rounded p-2" onClick={clickHandler}>
       <div className="flex justify-between">
@@ -27,7 +25,7 @@ const TaskAdminCard = ({ tache, supprimerHandler }) => {
       {open ? (
         <div className="flex justify-between">
           <p>
-            De {startTime.getHours()}:{startTime.getMinutes()} à{' '}
+            De {startTime.getHours()}:{startTime.getMinutes()} à{" "}
             {endTime.getHours()}:{endTime.getMinutes()}
           </p>
           <p>{tache.description}</p>
@@ -38,10 +36,10 @@ const TaskAdminCard = ({ tache, supprimerHandler }) => {
         </div>
       ) : null}
     </div>
-  )
-}
+  );
+};
 
-export default TaskAdminCard
+export default TaskAdminCard;
 
 {
   /* <h3>{tache.name}</h3>

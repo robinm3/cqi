@@ -28,8 +28,7 @@ export const createTask = async (
     )
     .then((response) => {
       return JSON.parse(response.data);
-    })
-    .catch((error) => {});
+    });
   return taskResponse;
 };
 
@@ -42,7 +41,7 @@ export const getUsers = async () => {
       },
     })
     .then((response) => {
-      return JSON.parse(response.data);
+      return response.data;
     })
     .catch((error) => {});
   return taskResponse;
