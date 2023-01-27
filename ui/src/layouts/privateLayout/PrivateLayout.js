@@ -9,7 +9,6 @@ const PrivateLayout = () => {
   const navigate = useNavigate();
   const { user, setUser } = useUserContext();
   const [clicked, setClicked] = useState(false);
-  console.log(user);
 
   const handleLogout = async () => {
     if (user) {

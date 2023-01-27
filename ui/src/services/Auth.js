@@ -65,7 +65,7 @@ export const login = async (email, password) => {
     })
     .catch((error) => {});
 
-  Cookies.set("token", userResponse, { secure: false });
+  Cookies.set("token", userResponse);
   const user = await getUser();
   return user;
 };
@@ -76,6 +76,7 @@ export const logout = async () => {
 
 export const getUser = async () => {
   const token = Cookies.get("token");
+  console.log("TOKEN");
   if (token && token !== "{}" && token !== "undefined") {
     const userResponse = await api
       .get("user:me", {
