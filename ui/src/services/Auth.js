@@ -5,12 +5,12 @@ export const signUp = async (email, firstName, lastName, type) => {
   const userResponse = await api
     .post(
       "user",
-      {
+      JSON.stringify({
         email,
         type,
         firstName,
         lastName,
-      },
+      }),
       {
         headers: {
           "content-type": "application/json",
@@ -29,9 +29,9 @@ export const updatePassword = async (newPassword) => {
   const userResponse = await api
     .put(
       "user",
-      {
-        newPassword,
-      },
+      JSON.stringify({
+        newMdp: newPassword,
+      }),
       {
         headers: {
           "content-type": "application/json",
@@ -50,10 +50,10 @@ export const login = async (email, password) => {
   const userResponse = await api
     .post(
       "user:login",
-      {
+      JSON.stringify({
         email: email,
         password: password,
-      },
+      }),
       {
         headers: {
           "content-type": "application/json",
@@ -64,8 +64,10 @@ export const login = async (email, password) => {
       return response.data;
     })
     .catch((error) => {});
-  Cookies.set("token", { email: "someUser" }, { secure: false });
-  return { email: "someUser", type: "Organisateur" };
+
+  Cookies.set("token", userResponse);
+  const user = await getUser();
+  return user;
 };
 
 export const logout = async () => {
@@ -74,6 +76,7 @@ export const logout = async () => {
 
 export const getUser = async () => {
   const token = Cookies.get("token");
+  console.log("TOKEN");
   if (token && token !== "{}" && token !== "undefined") {
     const userResponse = await api
       .get("user:me", {
@@ -87,7 +90,7 @@ export const getUser = async () => {
       .catch((error) => {
         console.log(error);
       });
-    return { email: "someUser", type: "Organisateur" };
+    return userResponse;
   }
   return undefined;
 };

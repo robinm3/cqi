@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 
 const NavButton = ({ to, children }) => {
   return (
@@ -6,13 +6,15 @@ const NavButton = ({ to, children }) => {
       <li>
         <NavLink
           to={to}
-          className={({ isActive }) => (isActive ? "text-white p-10" : "p-10")}
+          className={({ isActive }) =>
+            isActive ? ' border p-1 hover:shadow mx-3' : 'p-1 hover:shadow mx-3'
+          }
         >
           {children}
         </NavLink>
       </li>
     </>
-  );
-};
+  )
+}
 
-export default NavButton;
+export default NavButton
