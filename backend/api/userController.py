@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 
 from api.resource import ApiResource
 from infra.UserRepository import MongoDBUserRepository
@@ -31,6 +31,13 @@ class LoginController(ApiResource):
         data = request.get_json()
         return user_repository.login(data['email'], data['password'])
 
+class MeController(ApiResource):
+    @staticmethod
+    def path():
+        return "/user:me"
+
+    def get(self):
+        return jsonify({'type': 'Organisateur', 'first_name': 'John', 'last_name': 'Doe', 'email': 'fasdfasd@gmail.com'})
 
 class LogoutController(ApiResource):
     @staticmethod
