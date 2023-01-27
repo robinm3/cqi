@@ -3,6 +3,7 @@ from flask import request, jsonify
 from api.resource import ApiResource
 from infra.userRepository import UserRepository
 from domain.user import User
+import json
 
 user_repository = UserRepository()
 
@@ -51,7 +52,8 @@ class MeController(ApiResource):
         return "/user:me"
 
     def get(self):
-        return user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))
+        user = user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))
+        return json.dumps(user, default=str)
 
 class LogoutController(ApiResource):
     @staticmethod
