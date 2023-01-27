@@ -46,7 +46,7 @@ class UserRepository:
             "password": hash_password
         }
         self.user_db.insert_one(user)
-        #return send_email_fr(userDomaine.firstName, userDomaine.lastName, userDomaine.email, password)
+        return send_email_fr(userDomaine.firstName, userDomaine.lastName, userDomaine.email, password)
 
     def get_all_users(self):
         users = list(self.user_db.find())

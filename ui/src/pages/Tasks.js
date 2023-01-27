@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import TaskCard from '../components/TaskCard'
-import { getTasks } from '../services/Tasks'
+import { getTasks } from '../services/TaskServices'
 
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([])
@@ -10,7 +10,6 @@ const Tasks = () => {
       const tasks = await getTasks()
 
       setTasks(tasks)
-      console.log(tasks)
     }
     getTasksFromBackend()
   }, [])
