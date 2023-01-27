@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UserType(Enum):
+class ProblemType(Enum):
     ORGANISER = "Organisateur"
     VOLUNTEER = "Bénévole"
     FIRST_AID = "Premier Soin"
