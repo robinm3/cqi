@@ -1,28 +1,28 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
-import Home from './pages/Home'
-import PrivateLayout from './layouts/privateLayout/PrivateLayout'
-import NotFound from './pages/NotFound'
-import Potato from './pages/Potato'
-import Login from './pages/Login'
-import BasicLayout from './layouts/basicLayout/BasicLayout'
-import { UserContext } from './contexts/userContext'
-import { useEffect, useState } from 'react'
-import { getUser } from './services/Login'
-import Tasks from './pages/Tasks'
-import Reports from './pages/Reports'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import PrivateLayout from "./layouts/privateLayout/PrivateLayout";
+import NotFound from "./pages/NotFound";
+import Potato from "./pages/Potato";
+import Login from "./pages/Login";
+import BasicLayout from "./layouts/basicLayout/BasicLayout";
+import { UserContext } from "./contexts/userContext";
+import { useEffect, useState } from "react";
+import { getUser } from "./services/Login";
+import Tasks from "./pages/Tasks";
+import Reports from "./pages/Reports";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState('')
+  const [authenticated, setAuthenticated] = useState("");
 
   useEffect(() => {
     const authenticated = async () => {
-      const auth = await getUser()
-      console.log(auth)
-      setAuthenticated(auth)
-    }
-    authenticated()
-  })
+      if (!authenticated) {
+        const auth = await getUser();
+        setAuthenticated(auth);
+      }
+    };
+    authenticated();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -43,7 +43,7 @@ function App() {
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,23 +1,25 @@
-import { useContext } from 'react'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
-import useUserContext from '../../contexts/useUserContext'
-import { logout } from '../../services/Login'
-import NavButton from './NavButton'
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import useUserContext from "../../contexts/useUserContext";
+import { logout } from "../../services/Login";
+import NavButton from "./NavButton";
 
 const PrivateLayout = () => {
-  const navigate = useNavigate()
-  const { user, setUser } = useUserContext()
+  const navigate = useNavigate();
+  const { user, setUser } = useUserContext();
+  console.log(user);
 
   const handleLogout = async () => {
-    await logout()
-    navigate('/login')
-    setUser('')
-  }
+    if (user) {
+      await logout();
+      navigate("/login");
+      setUser("");
+    }
+  };
 
   return (
     <>
       {!user ? (
-        <Navigate to={{ pathname: '/login' }} />
+        <Navigate to={{ pathname: "/login" }} />
       ) : (
         <div>
           <nav className="bg-blue-400 p-6">
@@ -34,7 +36,7 @@ const PrivateLayout = () => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default PrivateLayout
+export default PrivateLayout;

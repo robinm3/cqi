@@ -8,7 +8,7 @@ const NewProblem = (props) => {
   return (
     <>
       <h2 id="newReport" className="text-2xl">
-        Nouveau rapport
+        Nouveau problème
       </h2>
       <form onSubmit={submitHandler} className="my-10">
         <div className="flex flex-col gap-4">
