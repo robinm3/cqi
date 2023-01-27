@@ -6,4 +6,17 @@ client = MongoClient("mongodb+srv://h21:mPythonMongo@cluster0.f9ba0.mongodb.net/
 
 
 class ProblemsRepository(UserRepository):
-    pass
+    def __init__(self, database_name, salt):
+        database = client[database_name]
+        self.credentials_db = database['credentials']
+        self.tokens_db = database['tokens']
+
+    def create_problem(self, name, desc, type, userId):
+        problem = {
+            "name": name,
+            "description": desc,
+            "type": type,
+            "userId": userId
+        }
+
+        return self.credentials_db.insert_one(problem)
