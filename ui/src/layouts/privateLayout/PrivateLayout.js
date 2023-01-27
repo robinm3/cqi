@@ -43,34 +43,20 @@ const PrivateLayout = () => {
         <Navigate to={{ pathname: '/login' }} />
       ) : (
         <div>
-          <nav className="bg-blue-400 p-6 flex justify-between">
-            <ul className=" flex justify-around align-middle">
-              <NavButton to="/tasks">Mes tâches</NavButton>
-              <NavButton to="/reports">Rapports</NavButton>
-              {user.type === 'Organisateur' && (
-                <NavButton to="/userCreation">Création d'utilisateur</NavButton>
-              )}
-              {user.type === 'Organisateur' && (
-                <NavButton to="/object">Objet perdu</NavButton>
-              )}
-              {user.type === 'Organisateur' && (
-                <NavButton to="/createTask">Gérer tâches</NavButton>
-              )}
+          <nav className="bg-blue-400 p-6 flex justify-between ">
+            <button class="lg:hidden" onClick={() => setClicked(!clicked)}>
+              <FaList />
+            </button>
+            <div className="hidden lg:flex">
+              {navigation('hidden justify-around align-middle lg:flex')}
+            </div>
+            <ul className="flex justify-around">
+              <NavButton to="/notifications">Notifications</NavButton>
+              <button onClick={handleLogout}>Logout</button>
             </ul>
-            <nav className="bg-blue-400 p-6 flex justify-between ">
-              <button class="lg:hidden" onClick={() => setClicked(!clicked)}>
-                <FaList />
-              </button>
-              <div className="hidden lg:flex">
-                {navigation('hidden justify-around align-middle lg:flex')}
-              </div>
-              <ul className="flex justify-around">
-                <NavButton to="/notifications">Notifications</NavButton>
-                <button onClick={handleLogout}>Logout</button>
-              </ul>
-            </nav>
-            {clicked && <nav class="lg:hidden">{navigation()}</nav>}
           </nav>
+          {clicked && <nav class="lg:hidden">{navigation()}</nav>}
+
           <div className="p-10">
             <Outlet />
           </div>
