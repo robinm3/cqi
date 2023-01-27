@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import { getUser } from './services/Login'
 import Tasks from './pages/Tasks'
 import Reports from './pages/Reports'
+import LostObj from './pages/LostObj'
 
 function App() {
   const [authenticated, setAuthenticated] = useState('')
@@ -32,6 +33,7 @@ function App() {
             <Route path="potato" element={<Potato />} />
             <Route path="tasks" element={<Tasks />} />
             <Route path="reports" element={<Reports />} />
+            <Route path="lostObj" element={<LostObj />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/login" element={<BasicLayout />}>

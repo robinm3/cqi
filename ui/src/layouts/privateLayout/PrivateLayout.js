@@ -18,6 +18,7 @@ const PrivateLayout = () => {
               {/* <NavButton to="/potato">Potato</NavButton> */}
               <NavButton to="/tasks">Mes taches</NavButton>
               <NavButton to="/reports">Rapports</NavButton>
+              <NavButton to="/lostObj">Objets perdus</NavButton>
             </ul>
           </nav>
 

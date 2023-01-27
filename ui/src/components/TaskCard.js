@@ -15,14 +15,14 @@ const TaskCard = ({ task }) => {
       className="shadow-md rounded py-3 px-5  select-none border mb-3 "
       onClick={clickHandler}
     >
-      <div className="flex text-xl">
+      <div className="flex ">
         <div className="font-bold"> {task.name}</div>
         <div className="ml-10">
           De {startTime.getHours()}:{startTime.getMinutes()} à{' '}
           {endTime.getHours()}:{endTime.getMinutes()}.
         </div>
       </div>
-      {open ? <p className="mt-3">{task.description}</p> : null}
+      {open ? <p className="mt-3 text-sm">{task.description}</p> : null}
     </div>
   )
 }
