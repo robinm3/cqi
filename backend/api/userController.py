@@ -21,7 +21,7 @@ class UserController(ApiResource):
 
     def put(self):
         data = request.get_json()
-        if(not user_repository.verify_token(request.headers.get("authorization").replace("Bearer ", ""))):
+        if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
         return user_repository.update_mdp(data['newMdp'], request.headers.get("authorization").replace("Bearer ", ""))
 

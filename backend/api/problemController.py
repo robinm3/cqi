@@ -1,8 +1,14 @@
-from flask import request, make_response, jsonify
-
+from flask import request, jsonify
 
 from api.resource import ApiResource
 from infra.problemsRepository import ProblemsRepository
+from domain.problem import Problem
+from infra.userRepository import UserRepository
+from infra.problemsRepository import ProblemsRepository
+
+user_repository = UserRepository()
+problem_repository = ProblemsRepository()
+
 
 class ProblemsController(ApiResource):
     @staticmethod
@@ -10,13 +16,12 @@ class ProblemsController(ApiResource):
         return "/problem"
 
     def post(self):
+        if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Token invalide"}, 400
+
         data = request.get_data()
-
-        #ProblemsRepository().add_problem(data['name'], data['description'], data['type'], data['userId'])
-
-        response = make_response()
-        response.status_code = 200
-        return response
+        problem = Problem(data['name'], data['description'], data['type'], data['userId'])
+        return problem_repository.create_problem(problem)
 
 
 class NotificationsController(ApiResource):
