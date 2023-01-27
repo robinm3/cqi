@@ -46,11 +46,12 @@ class TaskController(ApiResource):
         if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
 
-        if(not user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
+        if(user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
             tasks = task_repository.findAll()
         else:
             user = user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))
-            tasks = task_repository.findAll(user["_id"])
+            print(user["_id"])
+            tasks = task_repository.find(user["_id"])
 
         tasks_json = json.loads(json_util.dumps(tasks))
         return tasks_json
