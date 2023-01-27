@@ -30,7 +30,7 @@ export const updatePassword = async (newPassword) => {
     .put(
       "user",
       {
-        newPassword,
+        newMdp: newPassword,
       },
       {
         headers: {
@@ -64,8 +64,9 @@ export const login = async (email, password) => {
       return response.data;
     })
     .catch((error) => {});
-  Cookies.set("token", { email: "someUser" }, { secure: false });
-  return { email: "someUser", type: "Organisateur" };
+  Cookies.set("token", userResponse, { secure: false });
+  const user = await getUser();
+  return user;
 };
 
 export const logout = async () => {
@@ -87,7 +88,7 @@ export const getUser = async () => {
       .catch((error) => {
         console.log(error);
       });
-    return { email: "someUser", type: "Organisateur" };
+    return userResponse;
   }
   return undefined;
 };

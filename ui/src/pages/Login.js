@@ -1,19 +1,24 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
+import { login } from "../services/Auth";
 
 const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const loginAsDefaultUser = async () => {
-    // const auth = await login(email, password);
-    /*if (auth) {
-    }*/
-    setUser({ email: "some@email.com", type: "Organisateur" });
-    navigate("/");
+    const auth = await login(email, password);
+    if (auth) {
+      setError(false);
+      setUser(auth);
+      navigate("/");
+    } else {
+      setError(true);
+    }
   };
 
   const onChangeEmail = (e) => {
@@ -42,6 +47,7 @@ const Login = () => {
           >
             Login
           </button>
+          {error && <p>Invalid credentials</p>}
         </form>
       </div>
     </div>
