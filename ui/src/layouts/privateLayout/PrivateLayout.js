@@ -26,6 +26,9 @@ const PrivateLayout = () => {
             <ul className="flex justify-around align-middle">
               <NavButton to="/tasks">Mes tâches</NavButton>
               <NavButton to="/reports">Rapports</NavButton>
+              {user.type === "Organisateur" && (
+                <NavButton to="/userCreation">Création d'utilisateur</NavButton>
+              )}
             </ul>
             <ul className="flex justify-around">
               <NavButton to="/notifications">
