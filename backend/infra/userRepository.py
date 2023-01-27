@@ -1,19 +1,19 @@
 import hashlib
 import uuid
 
-from domain.constants import MONGO_HOST
-from services.UserRepository import UserRepository
+from domain.constants import MONGO_HOST, DB_NAME, SALT
 from pymongo import MongoClient
+from domain.utilitaire import generate_random_string
 
 client = MongoClient(MONGO_HOST)
 
 
-class MongoDBUserRepository(UserRepository):
-    def __init__(self, database_name, salt):
-        database = client[database_name]
-        self.credentials_db = database['credentials']
+class UserRepository:
+    def __init__(self):
+        database = client[DB_NAME]
+        self.user_db = database['users']
         self.tokens_db = database['tokens']
-        self.salt = salt
+        self.salt = SALT
 
     def get(self, token: str) -> str:
         user = self.tokens_db.find_one({
@@ -23,18 +23,23 @@ class MongoDBUserRepository(UserRepository):
             raise RuntimeError("No user")
         return user.get('email')
 
-    def sign_up(self, email: str, password: str) -> str:
-        hashed_password = self.calculate_hashed(password)
+    def create_account(self, email: str, firstName: str, lastName: str, type: str) -> str:
+        password = generate_random_string(10)
+        hash_password = self.calculate_hashed(password)
         user = {
             "email": email,
-            "password": hashed_password
+            "firstName": firstName,
+            "lastName": lastName,
+            "type": type,
+            "password": hash_password
         }
-        self.credentials_db.insert_one(user)
-        return self.create_token(email)
+        self.user_db.insert_one(user)
+
+
 
     def login(self, email: str, password: str) -> str:
         hashed_password = self.calculate_hashed(password)
-        credentials = self.credentials_db.find_one({
+        credentials = self.user_db.find_one({
             "email": email,
             "password": hashed_password
         })

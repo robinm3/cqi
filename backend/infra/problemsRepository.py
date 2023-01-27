@@ -1,13 +1,13 @@
 
-from services.UserRepository import UserRepository
+from domain.constants import MONGO_HOST, DB_NAME
 from pymongo import MongoClient
 
-client = MongoClient("mongodb+srv://h21:mPythonMongo@cluster0.f9ba0.mongodb.net/?retryWrites=true&w=majority")
-database_name = "Problem"
 
-class ProblemsRepository(UserRepository):
+client = MongoClient(MONGO_HOST)
+
+class ProblemsRepository:
     def __init__(self):
-        database = client[database_name]
+        database = client[DB_NAME]
         self.credentials_db = database['credentials']
         self.tokens_db = database['tokens']
 

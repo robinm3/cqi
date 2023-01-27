@@ -16,14 +16,20 @@ function App() {
   const [authenticated, setAuthenticated] = useState('')
 
   useEffect(() => {
-    const authenticated = async () => {
+    const authentication = async () => {
       if (!authenticated) {
         const auth = await getUser()
         setAuthenticated(auth)
       }
+<<<<<<< HEAD
     }
     authenticated()
   }, [])
+=======
+    };
+    authentication();
+  }, []);
+>>>>>>> 5b60d2b67a37d02d98cf0ee595e6f21d6c4cbe44
 
   return (
     <BrowserRouter>

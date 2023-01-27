@@ -1,10 +1,9 @@
 from flask import request, jsonify
 
 from api.resource import ApiResource
-from domain.constants import DB_NAME, SALT
-from infra.UserRepository import MongoDBUserRepository
+from infra.userRepository import UserRepository
 
-user_repository = MongoDBUserRepository(DB_NAME, SALT)
+user_repository = UserRepository()
 
 class UserController(ApiResource):
     @staticmethod
@@ -13,7 +12,7 @@ class UserController(ApiResource):
 
     def post(self):
         data = request.get_json()
-        return user_repository.sign_up(data['email'], data['password'])
+        return user_repository.create_account(data['email'], data['first_name'], data['last_name'], data['type'])
 
     def put(self):
         data = request.get_json()
