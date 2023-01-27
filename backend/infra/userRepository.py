@@ -131,5 +131,10 @@ class UserRepository:
 
     def read_notifications(self, token):
         user = self.get(token)
-
         self.user_db.update_many({"email": user["email"]},{"$unset": {"unreadNotification": ""}})
+
+    def is_admin(self, token):
+        user = self.get(token)
+        if user["type"] == "Organisateur":
+            return True
+        return False

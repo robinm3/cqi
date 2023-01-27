@@ -32,6 +32,10 @@ class TaskController(ApiResource):
     def post(self):
         if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
+
+        if(not user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Vous n'êtes pas admin"}, 400
+
         data = request.get_json()
         if not is_valid_task_format(data):
             return {'invalid_format': True}
@@ -41,7 +45,13 @@ class TaskController(ApiResource):
     def get(self):
         if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
-        tasks = task_repository.findAll()
+
+        if(not user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
+            tasks = task_repository.findAll()
+        else:
+            user = user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))
+            tasks = task_repository.findAll(user["_id"])
+
         tasks_json = json.loads(json_util.dumps(tasks))
         return tasks_json
 
@@ -54,12 +64,17 @@ class TaskIdController(ApiResource):
     def delete(self, task_id):
         if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
+        if(not user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Vous n'êtes pas admin"}, 400
+
         task_repository.delete(task_id)
         return f"Task {task_id} deleted"
 
     def put(self, task_id):
         if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
+        if(not user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Vous n'êtes pas admin"}, 400
         data = request.get_json()
         if is_valid_task_format(data):
             task_repository.put(data_to_task(data), task_id)

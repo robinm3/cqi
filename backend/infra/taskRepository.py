@@ -23,6 +23,11 @@ class TaskRepository:
         tasks = list(self.task_db.find())
         return tasks
 
+    def findAll(self, userId) -> List:
+        tasks = list(self.task_db.find({"userId": userId}))
+        return tasks
+
+
     def delete(self, taskId: str) -> None:
         self.task_db.delete_one({"_id": ObjectId(taskId)})
 
