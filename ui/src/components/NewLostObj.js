@@ -9,7 +9,10 @@ const NewLostObj = (props) => {
   const submitNewLostObjHandler = (e) => {
     e.preventDefault()
     if (name && description && date && contact) {
-      props.onSubmit([name, description, date, contact], 'lostObj')
+      props.onSubmit(
+        [name, description, new Date(date).getTime() / 1000, contact],
+        'lostObj'
+      )
       setName('')
       setDescription('')
       setDate('')
