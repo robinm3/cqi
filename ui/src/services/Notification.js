@@ -12,8 +12,8 @@ export const getNotifications = async () => {
   }).then((response) => {
     return response.data;
   });
-  
-  return response.message;
+
+  return response;
 };
 
 export default getNotifications;

@@ -1,36 +1,36 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/userContext";
-import { login } from "../services/Auth";
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../contexts/userContext'
+import { login } from '../services/Auth'
 
 const Login = () => {
-  const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const navigate = useNavigate()
+  const { user, setUser } = useContext(UserContext)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
 
   const loginAsDefaultUser = async () => {
-    const auth = await login(email, password);
+    const auth = await login(email, password)
     if (auth) {
-      setError(false);
-      setUser(auth);
-      navigate("/");
+      setError(false)
+      setUser(auth)
+      navigate('/')
     } else {
-      setError(true);
+      setError(true)
     }
-  };
+  }
 
   const onChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
+    setEmail(e.target.value)
+  }
 
   const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
+    setPassword(e.target.value)
+  }
 
   if (user) {
-    navigate("/");
+    navigate('/')
   }
   return (
     <div>
@@ -54,7 +54,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
