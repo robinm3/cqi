@@ -44,7 +44,7 @@ class LostItemController(ApiResource):
 
     def put(self):
         data = request.get_json()
-        lostItemRepo.envoyerEmail(data['id'])
+        lostItemRepo.envoyerEmail(data['id']["$oid"])
 
         response = make_response()
         response.status_code = 200
