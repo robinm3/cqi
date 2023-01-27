@@ -23,7 +23,11 @@ routes: list[Type[ApiResource]] = [
     LogoutController,
     UserController,
     TaskController,
+<<<<<<< HEAD
     ProblemsController
+=======
+    TaskIdController
+>>>>>>> c93edc7e33df9d8ad8d3abb84226982419b0e919
 ]
 
 for route in routes:
