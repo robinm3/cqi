@@ -1,14 +1,14 @@
 from flask import request
 
 from api.resource import ApiResource
-from infra.MongoDBUserRepository import MongoDBUserRepository
+from infra.UserRepository import MongoDBUserRepository
 
 salt = "someSalt"
 db_name = "someDB"
 user_repository = MongoDBUserRepository(db_name, salt)
 
 
-class SignUpController(ApiResource):
+class UserController(ApiResource):
     @staticmethod
     def path():
         return "/user"
@@ -20,6 +20,9 @@ class SignUpController(ApiResource):
     def put(self):
         data = request.get_json()
         return f"User modified with data {data}"
+
+    def get(self):
+        return [{"id": 69, "userName": "leo", "userId": 69}]
 
 
 class LoginController(ApiResource):
@@ -41,12 +44,3 @@ class LogoutController(ApiResource):
         token = request.headers.get("authorization").replace("Bearer ", "")
         return user_repository.logout(token)
 
-
-class UserController(ApiResource):
-    @staticmethod
-    def path():
-        return "/user:me"
-
-    def get(self):
-        token = request.headers.get("authorization").replace("Bearer ", "")
-        return user_repository.get(token)
