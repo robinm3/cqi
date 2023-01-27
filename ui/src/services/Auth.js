@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import { api } from "./api";
 
 export const signUp = async (email, firstName, lastName, type) => {
+  const token = Cookies.get("token");
   const userResponse = await api
     .post(
       "user",
@@ -14,13 +15,13 @@ export const signUp = async (email, firstName, lastName, type) => {
       {
         headers: {
           "content-type": "application/json",
+          authorization: token,
         },
       }
     )
     .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {});
+      return JSON.parse(response.data);
+    });
   return userResponse;
 };
 
@@ -40,7 +41,7 @@ export const updatePassword = async (newPassword) => {
       }
     )
     .then((response) => {
-      return response.data;
+      return JSON.parse(response.data);
     })
     .catch((error) => {});
   return userResponse;
@@ -90,7 +91,7 @@ export const getUser = async () => {
       .catch((error) => {
         console.log(error);
       });
-    return userResponse;
+    return JSON.parse(userResponse);
   }
   return undefined;
 };
