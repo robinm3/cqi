@@ -34,7 +34,8 @@ const Login = () => {
   }
   return (
     <div>
-      <div className="flex m-5  h-screen place-items-center justify-center">
+      <div className="flex flex-col m-5  h-screen place-items-center justify-center gap-[4em]">
+        <span className='text-5xl'>EvenTask</span>
         <div className="flex flex-col text-lg bg-blue-100 p-10 rounded-lg">
           <label>Email</label>
           <input type="email" onChange={onChangeEmail} className="mb-5 mt-3" />
