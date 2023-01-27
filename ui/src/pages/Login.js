@@ -1,11 +1,18 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/userContext";
 import { login } from "../services/Login";
 import Button from "../shared/Button";
 
 const Login = () => {
-  const loginAsDefaultUser = () => {
-    login("some@email.com", "12345");
-  };
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
+  const loginAsDefaultUser = async () => {
+    await login("some@email.com", "12345");
+    setUser("some@email.com");
+    navigate("/");
+  };
   return (
     <div>
       <h1 className="text-3xl font-bold underline">Login</h1>
