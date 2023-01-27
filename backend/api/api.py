@@ -8,7 +8,7 @@ from api.problemController import ProblemsController
 from api.pingController import PingController
 from api.resource import ApiResource
 from api.taskController import TaskController, TaskIdController
-from api.userController import UserController, SignUpController, LoginController, LogoutController
+from api.userController import UserController, UserController, LoginController, LogoutController
 
 
 app = Flask(__name__)
@@ -18,10 +18,9 @@ api = Api(app)
 
 routes: list[Type[ApiResource]] = [
     PingController,
-    SignUpController,
+    UserController,
     LoginController,
     LogoutController,
-    UserController,
     TaskController,
     TaskIdController,
     ProblemsController
