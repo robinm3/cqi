@@ -99,7 +99,7 @@ class UserRepository:
         })
 
         if not credentials or credentials.get('timestamp') > datetime.datetime.now():
-            if credentials.get('timestamp') > datetime.datetime.now():
+            if credentials and credentials.get('timestamp') > datetime.datetime.now():
                 self.tokens_db.delete_one({"token": token})
             return False
         else:

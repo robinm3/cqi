@@ -9,7 +9,6 @@ class ProblemsRepository:
     def __init__(self):
         database = client[DB_NAME]
         self.credentials_db = database['credentials']
-        self.tokens_db = database['tokens']
 
     def create_problem(self, name, desc, type, userId):
         problem = {

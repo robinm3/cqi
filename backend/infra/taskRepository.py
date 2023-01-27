@@ -1,12 +1,9 @@
-import hashlib
-import uuid
 from typing import List
 
 from domain.constants import MONGO_HOST, DB_NAME, SALT
 from pymongo import MongoClient
 
 from domain.task import Task
-from domain.utilitaire import generate_random_string
 
 client = MongoClient(MONGO_HOST)
 
