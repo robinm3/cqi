@@ -1,19 +1,24 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
+import { login } from "../services/Auth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const loginAsDefaultUser = async () => {
-    // const auth = await login(email, password);
-    /*if (auth) {
-    }*/
-    setUser({ email: "some@email.com", type: "Organisateur" });
-    navigate("/");
+    const auth = await login(email, password);
+    if (auth) {
+      setError(false);
+      setUser(auth);
+      navigate("/");
+    } else {
+      setError(true);
+    }
   };
 
   const onChangeEmail = (e) => {
@@ -24,10 +29,13 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  if (user) {
+    navigate("/");
+  }
   return (
     <div>
       <div className="flex m-5  h-screen place-items-center justify-center">
-        <form className="flex flex-col text-lg bg-blue-100 p-10 rounded-lg">
+        <div className="flex flex-col text-lg bg-blue-100 p-10 rounded-lg">
           <label>Email</label>
           <input type="email" onChange={onChangeEmail} className="mb-5 mt-3" />
           <label>Password</label>
@@ -42,7 +50,8 @@ const Login = () => {
           >
             Login
           </button>
-        </form>
+          {error && <p>Invalid credentials</p>}
+        </div>
       </div>
     </div>
   );
