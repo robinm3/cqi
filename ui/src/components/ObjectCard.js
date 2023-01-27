@@ -1,6 +1,14 @@
 import React from 'react'
 
-const ObjectCard = ({ obj }) => {
+const ObjectCard = ({ obj, found }) => {
+  console.log(obj)
+  let date = new Date()
+  if (found) {
+    date = new Date(obj.foundTime)
+  } else {
+    date = new Date(obj.lostTime)
+  }
+
   const monthNames = [
     'janvier',
     'février',
@@ -20,12 +28,11 @@ const ObjectCard = ({ obj }) => {
       <h3 className="font-bold">{obj.name}</h3>
       <p className="text-left">{obj.description}</p>
       <p className="text-left">
-        {new Date(obj.time * 1000).getHours()}:
-        {new Date(obj.time * 1000).getMinutes()}
+        {date.getHours()}:{date.getMinutes()}
         {' - '}
-        {new Date(obj.time * 1000).getDate()}{' '}
-        {monthNames[new Date(obj.time * 1000).getMonth()]}{' '}
+        {date.getDate()} {monthNames[date.getMonth()]}{' '}
       </p>
+      {!found ? <p>{obj.email}</p> : null}
     </div>
   )
 }
