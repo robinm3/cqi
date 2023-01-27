@@ -42,7 +42,7 @@ class LostItemController(ApiResource):
         lost_items_json = json.loads(json_util.dumps(lost_items))
         return lost_items_json
 
-    def update(self):
+    def put(self):
         data = request.get_json()
         lostItemRepo.envoyerEmail(data['_id'])
 
