@@ -47,7 +47,7 @@ const Tasks = () => {
           );
         })
         .map((task) => (
-          <TaskCard task={task} />
+          <TaskCard task={task} key={task.name} />
         ))}
       <h2 className="text-2xl mb-5">Plus-tard</h2>
       {tasks
@@ -55,7 +55,7 @@ const Tasks = () => {
           return new Date(task.startTime * 1000) > new Date();
         })
         .map((task) => (
-          <TaskCard task={task} />
+          <TaskCard task={task} key={task.name} />
         ))}
     </div>
   );
