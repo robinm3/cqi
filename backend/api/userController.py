@@ -21,7 +21,9 @@ class UserController(ApiResource):
 
     def put(self):
         data = request.get_json()
-        return f"User modified with data {data}"
+        if(not user_repository.verify_token(request.headers.get("authorization").replace("Bearer ", ""))):
+            return {"error": "Token invalide"}, 400
+        return user_repository.update_mdp(data['newMdp'], request.headers.get("authorization").replace("Bearer ", ""))
 
     def get(self):
         return user_repository.get_all_users()
@@ -45,7 +47,7 @@ class MeController(ApiResource):
         return "/user:me"
 
     def get(self):
-        return jsonify({'type': 'Organisateur', 'first_name': 'John', 'last_name': 'Doe', 'email': 'fasdfasd@gmail.com'})
+        return user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))
 
 class LogoutController(ApiResource):
     @staticmethod
