@@ -3,7 +3,10 @@ import uuid
 
 from domain.constants import MONGO_HOST, DB_NAME, SALT
 from pymongo import MongoClient
-from domain.utilitaire import generate_random_string
+from domain.utilitaire import generate_random_string, send_email_fr
+from domain.user import User
+import json
+import datetime
 
 client = MongoClient(MONGO_HOST)
 
@@ -23,18 +26,23 @@ class UserRepository:
             raise RuntimeError("No user")
         return user.get('email')
 
-    def create_account(self, email: str, firstName: str, lastName: str, type: str) -> str:
+    def create_account(self, userDomaine: User) -> str:
         password = generate_random_string(10)
         hash_password = self.calculate_hashed(password)
         user = {
-            "email": email,
-            "firstName": firstName,
-            "lastName": lastName,
-            "type": type,
+            "email": userDomaine.email,
+            "firstName": userDomaine.firstName,
+            "lastName": userDomaine.lastName,
+            "type": userDomaine.type,
             "password": hash_password
         }
         self.user_db.insert_one(user)
+        #return send_email_fr(userDomaine.firstName, userDomaine.lastName, userDomaine.email, password)
 
+    def get_all_users(self):
+        users = list(self.user_db.find())
+        users_json = json.dumps(users, default=str)
+        return users_json
 
 
     def login(self, email: str, password: str) -> str:
@@ -44,7 +52,8 @@ class UserRepository:
             "password": hashed_password
         })
         if not credentials:
-            raise RuntimeError("No user")
+            return {"error": "Mot de passe invalide"}, 400
+
         return self.create_token(email)
 
     def logout(self, token: str):
@@ -61,7 +70,26 @@ class UserRepository:
         token = uuid.uuid4().__str__()
         user = {
             "email": email,
-            "token": token
+            "token": token,
+            "timestamp": datetime.datetime.now()
         }
         self.tokens_db.insert_one(user)
         return token
+
+    def user_exist(self, email):
+        user = self.user_db.find_one({
+            "email": email
+        })
+        if not user:
+            return False
+        return True
+
+    def verify_token(self, token):
+        credentials = self.tokens_db.find_one({
+            "token": token
+        })
+
+        if not credentials or credentials.get('timestamp') > datetime.datetime.now():
+            return {"error": "Token invalide"}, 400
+        else:
+            return self.user_db.find_one({"email":credentials['email']})
