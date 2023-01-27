@@ -17,6 +17,10 @@ class SignUpController(ApiResource):
         data = request.get_json()
         return user_repository.sign_up(data['email'], data['password'])
 
+    def put(self):
+        data = request.get_json()
+        return f"User modified with data {data}"
+
 
 class LoginController(ApiResource):
     @staticmethod
