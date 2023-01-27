@@ -4,9 +4,10 @@ from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
 
-from api.pingcontroller import PingController
+from api.pingController import PingController
 from api.resource import ApiResource
-from api.usercontroller import UserController, SignUpController, LoginController, LogoutController
+from api.userController import UserController, SignUpController, LoginController, LogoutController
+from api.taskController import TaskController
 
 app = Flask(__name__)
 CORS(app)
@@ -18,7 +19,8 @@ routes: list[Type[ApiResource]] = [
     SignUpController,
     LoginController,
     LogoutController,
-    UserController
+    UserController,
+    TaskController
 ]
 
 for route in routes:

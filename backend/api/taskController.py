@@ -1,0 +1,55 @@
+from time import time
+
+from flask import request
+
+from api.resource import ApiResource
+from infra.MongoDBUserRepository import MongoDBUserRepository
+
+salt = "someSalt"
+db_name = "someDB"
+user_repository = MongoDBUserRepository(db_name, salt)
+
+
+class TaskController(ApiResource):
+    @staticmethod
+    def path():
+        return "/task"
+
+    def post(self):
+        data = request.get_json()
+        return data
+        #return user_repository.sign_up(data['email'], data['password'])
+
+    def get(self):
+        data =[ {'id': 1, 'name': 'task1', 'description': 'qqch', 'startTime': time(), 'endTime': time(), 'volonteerId': 1}]
+        return data
+
+
+class LoginController(ApiResource):
+    @staticmethod
+    def path():
+        return "/user:login"
+
+    def post(self):
+        data = request.get_json()
+        return user_repository.login(data['email'], data['password'])
+
+
+class LogoutController(ApiResource):
+    @staticmethod
+    def path():
+        return "/user:logout"
+
+    def post(self):
+        token = request.headers.get("authorization").replace("Bearer ", "")
+        return user_repository.logout(token)
+
+
+class UserController(ApiResource):
+    @staticmethod
+    def path():
+        return "/user:me"
+
+    def get(self):
+        token = request.headers.get("authorization").replace("Bearer ", "")
+        return user_repository.get(token)
