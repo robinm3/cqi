@@ -7,10 +7,13 @@ const Reports = () => {
   const submitHandler = (values, type) => {
     if (type === 'problem') {
       const [name, description, type] = values
+      //api
     } else if (type === 'lostObj') {
       const [name, description, date, contact] = values
+      //api
     } else if (type === 'foundObj') {
       const [name, description, date] = values
+      //api
     }
   }
   const [currentForm, setCurrentForm] = useState(

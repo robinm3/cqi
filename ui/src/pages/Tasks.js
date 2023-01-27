@@ -1,32 +1,32 @@
-import React, { useEffect } from "react";
-import TaskCard from "../components/TaskCard";
-import { getTasks } from "../services/TaskServices";
+import React, { useEffect } from 'react'
+import TaskCard from '../components/TaskCard'
+import { getTasks } from '../services/TaskServices'
 
 const Tasks = () => {
-  const [tasks, setTasks] = React.useState([]);
+  const [tasks, setTasks] = React.useState([])
 
   useEffect(() => {
     const getTasksFromBackend = async () => {
-      const tasks = await getTasks();
-      setTasks(tasks);
-    };
-    getTasksFromBackend();
-  }, []);
+      const tasks = await getTasks()
+      setTasks(tasks)
+    }
+    getTasksFromBackend()
+  }, [])
 
   const monthNames = [
-    "janvier",
-    "février",
-    "mars",
-    "avril",
-    "mai",
-    "juin",
-    "juillet",
-    "août",
-    "septembre",
-    "octobre",
-    "novenbre",
-    "décembre",
-  ];
+    'janvier',
+    'février',
+    'mars',
+    'avril',
+    'mai',
+    'juin',
+    'juillet',
+    'août',
+    'septembre',
+    'octobre',
+    'novenbre',
+    'décembre',
+  ]
 
   return (
     <div>
@@ -38,7 +38,7 @@ const Tasks = () => {
         .filter((task) => {
           return (
             new Date(task.startTime * 1000).getDate() == new Date().getDate()
-          );
+          )
         })
         .map((task) => (
           <TaskCard task={task} key={task.name} withDate={false} />
@@ -46,13 +46,13 @@ const Tasks = () => {
       <h2 className="text-2xl mb-5">Tous les tâches</h2>
       {tasks
         .filter((task) => {
-          return new Date(task.startTime * 1000) > new Date();
+          return new Date(task.startTime * 1000) > new Date()
         })
         .map((task) => (
           <TaskCard task={task} key={task.name} withDate={true} />
         ))}
     </div>
-  );
-};
+  )
+}
 
-export default Tasks;
+export default Tasks

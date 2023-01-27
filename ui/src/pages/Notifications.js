@@ -1,90 +1,9 @@
 import React, { useState } from 'react'
 import NotificationCard from '../components/NotificationCard'
+import { getNotifications } from '../services/Notification'
 
 const Notifications = () => {
-  // const notifications = getNotifications()
-  const notifications = [
-    {
-      name: 'Nouveau objet trouvé',
-      description: 'un cell bleu avec des pommes',
-      type: 'securite',
-      userFirstName: 'John',
-      userLastName: 'Doe',
-      read: false,
-    },
-    {
-      name: 'Nouveau objet perdu',
-      description: 'un balais noir avec des pommes',
-      type: 'securite',
-      userFirstName: 'John2',
-      userLastName: 'Doe2',
-      read: true,
-    },
-    {
-      name: 'Nouveau objet trouvé',
-      description: 'un cell bleu avec des pommes',
-      type: 'securite',
-      userFirstName: 'John',
-      userLastName: 'Doe',
-      read: false,
-    },
-    {
-      name: 'Nouveau objet perdu',
-      description: 'un balais noir avec des pommes',
-      type: 'securite',
-      userFirstName: 'John2',
-      userLastName: 'Doe2',
-      read: true,
-    },
-    {
-      name: 'Nouveau objet trouvé',
-      description: 'un cell bleu avec des pommes',
-      type: 'securite',
-      userFirstName: 'John',
-      userLastName: 'Doe',
-      read: false,
-    },
-    {
-      name: 'Nouveau objet perdu',
-      description: 'un balais noir avec des pommes',
-      type: 'securite',
-      userFirstName: 'John2',
-      userLastName: 'Doe2',
-      read: true,
-    },
-    {
-      name: 'Nouveau objet trouvé',
-      description: 'un cell bleu avec des pommes',
-      type: 'securite',
-      userFirstName: 'John',
-      userLastName: 'Doe',
-      read: false,
-    },
-    {
-      name: 'Nouveau objet perdu',
-      description: 'un balais noir avec des pommes',
-      type: 'securite',
-      userFirstName: 'John2',
-      userLastName: 'Doe2',
-      read: true,
-    },
-    {
-      name: 'Nouveau objet trouvé',
-      description: 'un cell bleu avec des pommes',
-      type: 'securite',
-      userFirstName: 'John',
-      userLastName: 'Doe',
-      read: false,
-    },
-    {
-      name: 'Nouveau objet perdu',
-      description: 'un balais noir avec des pommes',
-      type: 'securite',
-      userFirstName: 'John2',
-      userLastName: 'Doe2',
-      read: false,
-    },
-  ]
+  const notifications = getNotifications()
 
   return (
     <div className="grid md:grid-cols-3 grid-cols-1 gap-3">

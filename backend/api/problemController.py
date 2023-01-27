@@ -32,7 +32,7 @@ class NotificationsController(ApiResource):
         return "/notifications"
 
     def get(self):
-        if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
+        if(request.headers.get("authorization") and not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
             return {"error": "Token invalide"}, 400
 
         notifications = problem_repository.get_notifications()
