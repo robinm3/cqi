@@ -3,7 +3,8 @@ name: Deploy Prod Apps
 on:
   push:
     branches:
-      - master
+      - githubAction
+      - main
 
 jobs:
   deploy:
