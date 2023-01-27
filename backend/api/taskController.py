@@ -1,6 +1,6 @@
 import json
-from time import time
 
+from bson import json_util
 from flask import request
 
 from api.resource import ApiResource
@@ -23,7 +23,7 @@ class TaskController(ApiResource):
 
     def get(self):
         tasks = task_repository.findAll()
-        tasks_json = json.dumps(tasks, default=str)
+        tasks_json = json.loads(json_util.dumps(tasks))
         return tasks_json
 
     def is_valid_task_format(self, data):
