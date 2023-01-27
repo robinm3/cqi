@@ -26,5 +26,5 @@ class TaskRepository:
     def delete(self, taskId: str) -> None:
         self.task_db.delete_one({"_id": ObjectId(taskId)})
 
-    def put(self, task: Task) -> None:
-        pass
+    def put(self, task: Task, taskId: str) -> None:
+        self.task_db.replace_one({"_id": ObjectId(taskId)}, task.__dict__)

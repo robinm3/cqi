@@ -2,7 +2,6 @@ import React from 'react'
 
 const NewFoundObj = (props) => {
   const submitNewLostObjHandler = (e) => {
-    e.preventDefault()
     props.onSubmit(e, 'foundObj')
   }
 

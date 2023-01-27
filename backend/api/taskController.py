@@ -9,6 +9,19 @@ from infra.taskRepository import TaskRepository
 
 task_repository = TaskRepository()
 
+
+def data_to_task(data) -> Task:
+    return Task(data['name'], data['description'], data['startTime'], data['endTime'], data['userId'])
+
+
+def is_valid_task_format(data):
+    try:
+        data_to_task(data)
+    except:
+        return False
+    return True
+
+
 class TaskController(ApiResource):
     @staticmethod
     def path():
@@ -16,9 +29,9 @@ class TaskController(ApiResource):
 
     def post(self):
         data = request.get_json()
-        if not self.is_valid_task_format(data):
+        if not is_valid_task_format(data):
             return {'invalid_format': True}
-        task_repository.save(self.data_to_task(data))
+        task_repository.save(data_to_task(data))
         return data
 
     def get(self):
@@ -26,15 +39,6 @@ class TaskController(ApiResource):
         tasks_json = json.loads(json_util.dumps(tasks))
         return tasks_json
 
-    def is_valid_task_format(self, data):
-        try:
-            self.data_to_task(data)
-        except:
-            return False
-        return True
-
-    def data_to_task(self, data) -> Task:
-        return Task(data['name'], data['description'], data['startTime'], data['endTime'], data['userId'])
 
 class TaskIdController(ApiResource):
     @staticmethod
@@ -47,4 +51,8 @@ class TaskIdController(ApiResource):
 
     def put(self, task_id):
         data = request.get_json()
+        if is_valid_task_format(data):
+            task_repository.put(data_to_task(data), task_id)
+        else:
+            return 'invalid data format'
         return f"Task {task_id} modified with data: {data}"
