@@ -135,6 +135,4 @@ class UserRepository:
 
     def is_admin(self, token):
         user = self.get(token)
-        if user["type"] == "Organisateur":
-            return True
-        return False
+        return user["type"] == "Organisateur"
