@@ -1,5 +1,7 @@
 from typing import List
 
+from bson import ObjectId
+
 from domain.constants import MONGO_HOST, DB_NAME, SALT
 from pymongo import MongoClient
 
@@ -21,9 +23,8 @@ class TaskRepository:
         tasks = list(self.task_db.find())
         return tasks
 
-    def delete(self, taskId: int) -> None:
-        pass
+    def delete(self, taskId: str) -> None:
+        self.task_db.delete_one({"_id": ObjectId(taskId)})
 
     def put(self, task: Task) -> None:
         pass
-
