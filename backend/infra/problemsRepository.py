@@ -10,12 +10,12 @@ class ProblemsRepository:
         database = client[DB_NAME]
         self.credentials_db = database['credentials']
 
-    def create_problem(self, name, desc, type, userId):
+    def create_problem(self, problem):
         problem = {
-            "name": name,
-            "description": desc,
-            "type": type,
-            "userId": userId
+            "name": problem.name,
+            "description": problem.description,
+            "type": problem.type,
+            "userId": problem.userId
         }
 
         return self.credentials_db.insert_one(problem)

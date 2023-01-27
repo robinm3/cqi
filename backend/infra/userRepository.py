@@ -93,7 +93,7 @@ class UserRepository:
             return False
         return True
 
-    def verify_token(self, token):
+    def is_valide_token(self, token):
         credentials = self.tokens_db.find_one({
             "token": token
         })
