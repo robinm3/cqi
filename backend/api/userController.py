@@ -2,7 +2,7 @@ from flask import request, jsonify
 
 from api.resource import ApiResource
 from domain.constants import DB_NAME, SALT
-from infra.UserRepository import UserRepository
+from infra.userRepository import UserRepository
 
 user_repository = UserRepository(DB_NAME, SALT)
 

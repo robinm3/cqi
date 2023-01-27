@@ -2,7 +2,7 @@ from flask import request, make_response, jsonify
 
 
 from api.resource import ApiResource
-from infra.ProblemsRepository import ProblemsRepository
+from infra.problemsRepository import ProblemsRepository
 
 class ProblemsController(ApiResource):
     @staticmethod
