@@ -3,6 +3,10 @@ from time import time
 from flask import request
 
 from api.resource import ApiResource
+from domain.task import Task
+from infra.taskRepository import TaskRepository
+
+task_repository = TaskRepository()
 
 class TaskController(ApiResource):
     @staticmethod
@@ -11,11 +15,23 @@ class TaskController(ApiResource):
 
     def post(self):
         data = request.get_json()
+        if not self.is_valid_task_format(data):
+            return {'invalid_format': True}
+        task_repository.save(self.data_to_task(data))
         return data
 
     def get(self):
-        data =[ {'id': 1, 'name': 'task1', 'description': 'qqch', 'startTime': time(), 'endTime': time(), 'volonteerId': 1}]
-        return data
+        return [task.__dict__ for task in task_repository.findAll()]
+
+    def is_valid_task_format(self, data):
+        try:
+            self.data_to_task(data)
+        except:
+            return False
+        return True
+
+    def data_to_task(self, data) -> Task:
+        return Task(data['name'], data['description'], data['startTime'], data['endTime'], data['userId'])
 
 class TaskIdController(ApiResource):
     @staticmethod

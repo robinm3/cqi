@@ -24,7 +24,7 @@ class TaskRepository:
         db_content = self.task_db.find()
         tasks = []
         for content in db_content:
-            task = Task(content['name'], content['description'], content['startTime'], content['endTime'])
+            task = Task(content['name'], content['description'], content['startTime'], content['endTime'], content['userId'])
             tasks.append(task)
         return tasks
 
