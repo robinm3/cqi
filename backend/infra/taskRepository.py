@@ -1,8 +1,11 @@
 import hashlib
 import uuid
+from typing import List
 
 from domain.constants import MONGO_HOST, DB_NAME, SALT
 from pymongo import MongoClient
+
+from domain.task import Task
 from domain.utilitaire import generate_random_string
 
 client = MongoClient(MONGO_HOST)
@@ -11,56 +14,23 @@ client = MongoClient(MONGO_HOST)
 class TaskRepository:
     def __init__(self):
         database = client[DB_NAME]
-        self.user_db = database['users']
-        self.tokens_db = database['tokens']
+        self.task_db = database['tasks']
         self.salt = SALT
 
-    def get(self, token: str) -> str:
-        user = self.tokens_db.find_one({
-            "token": token
-        })
-        if not user:
-            raise RuntimeError("No user")
-        return user.get('email')
+    def save(self, task: Task) -> None:
+        self.task_db.insert_one(task.__dict__)
 
-    def create_account(self, email: str, firstName: str, lastName: str, type: str) -> str:
-        password = generate_random_string(10)
-        hash_password = self.calculate_hashed(password)
-        user = {
-            "email": email,
-            "firstName": firstName,
-            "lastName": lastName,
-            "type": type,
-            "password": hash_password
-        }
-        self.user_db.insert_one(user)
-        return self.create_token(email)
+    def findAll(self) -> List[Task]:
+        db_content = self.task_db.find()
+        tasks = []
+        for content in db_content:
+            task = Task(content['name'], content['description'], content['startTime'], content['endTime'])
+            tasks.append(task)
+        return tasks
 
-    def login(self, email: str, password: str) -> str:
-        hashed_password = self.calculate_hashed(password)
-        credentials = self.user_db.find_one({
-            "email": email,
-            "password": hashed_password
-        })
-        if not credentials:
-            raise RuntimeError("No user")
-        return self.create_token(email)
+    def delete(self, taskId: int) -> None:
+        pass
 
-    def logout(self, token: str):
-        self.tokens_db.delete_one({
-            "token": token
-        }
-        )
+    def put(self, task: Task) -> None:
+        pass
 
-    def calculate_hashed(self, password):
-        dataBase_password = password + self.salt
-        return hashlib.md5(dataBase_password.encode()).hexdigest()
-
-    def create_token(self, email) -> str:
-        token = uuid.uuid4().__str__()
-        user = {
-            "email": email,
-            "token": token
-        }
-        self.tokens_db.insert_one(user)
-        return token
