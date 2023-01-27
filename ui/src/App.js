@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { getUser } from "./services/Login";
 import Tasks from "./pages/Tasks";
 import Reports from "./pages/Reports";
+import UserCreation from "./pages/UserCreation";
+import Notifications from "./pages/Notifications";
 
 function App() {
   const [authenticated, setAuthenticated] = useState("");
