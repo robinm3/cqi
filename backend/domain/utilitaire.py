@@ -11,19 +11,15 @@ def generate_random_string(length: int) -> str:
 
 
 
-def send_email_fr(first_name, last_name, email, password):
-    messagetext = f"<span>Merci d'avoir été bénévole pour notre événement, {first_name} {last_name}. Veuillez vous connecter à notre plateforme en utilisant les informations de connexion suivantes:\n\nEmail: {email}\nMot de passe: {password}\n\nMerci!</span>"
-
+def send_email_fr(content, subject,  email):
     message = Mail(
         from_email='marcanthony.girard.protic@gmail.com',
         to_emails=email,
-        subject='Sending with Twilio SendGrid is Fun',
-        html_content=messagetext)
+        subject=subject,
+        html_content=content)
     sg = SendGridAPIClient("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")
     response = sg.send(message)
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
+
 
 
 

@@ -42,6 +42,14 @@ class LostItemController(ApiResource):
         lost_items_json = json.loads(json_util.dumps(lost_items))
         return lost_items_json
 
+    def update(self):
+        data = request.get_json()
+        lostItemRepo.envoyerEmail(data['_id'])
+
+        response = make_response()
+        response.status_code = 200
+        return response
+
 
 class FoundItemController(ApiResource):
     @staticmethod

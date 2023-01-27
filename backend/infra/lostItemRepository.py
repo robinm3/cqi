@@ -3,7 +3,7 @@ from typing import List
 from domain.constants import MONGO_HOST, DB_NAME
 from pymongo import MongoClient
 from domain.lostItem import LostItem
-
+from domain.utilitaire import send_email_fr
 
 client = MongoClient(MONGO_HOST)
 
@@ -18,3 +18,10 @@ class LostItemRepository:
     def findAll(self) -> List:
         items = list(self.lostItem_db.find())
         return items
+
+    def envoyerEmailenvoyerEmail(self, id):
+        item = self.lostItem_db.find_one({"_id": id})
+        message = f"<span>Un objet que vous avez perdu a été trouvé. Veuillez vous rendre au centre d'aide au festival pour le retrouver.</span>"
+        subject = "Objet trouvé"
+
+        return send_email_fr(message, subject, item.email)

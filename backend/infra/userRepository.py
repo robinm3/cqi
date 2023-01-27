@@ -3,7 +3,7 @@ import uuid
 
 from domain.constants import MONGO_HOST, DB_NAME, SALT
 from pymongo import MongoClient
-from domain.utilitaire import generate_random_string
+from domain.utilitaire import generate_random_string, send_email_fr
 from domain.user import User
 import datetime
 
@@ -45,7 +45,9 @@ class UserRepository:
             "password": hash_password
         }
         self.user_db.insert_one(user)
-        #return send_email_fr(userDomaine.firstName, userDomaine.lastName, userDomaine.email, password)
+        message = f"<span>Merci d'avoir été bénévole pour notre événement, {userDomaine.firstName} {userDomaine.lastName}. Veuillez vous connecter à notre plateforme en utilisant les informations de connexion suivantes:\n\nEmail: {userDomaine.email}\nMot de passe: {password}\n\nMerci!</span>"
+        subject = "Inscription EventTask"
+        return send_email_fr(message, subject, userDomaine.email)
 
     def get_all_users(self):
         users = list(self.user_db.find())
