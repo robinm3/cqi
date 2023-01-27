@@ -1,3 +1,4 @@
+from bson import json_util
 from flask import request, jsonify
 
 from api.resource import ApiResource
@@ -31,7 +32,8 @@ class UserController(ApiResource):
         return user_repository.update_mdp(data['newMdp'], request.headers.get("authorization").replace("Bearer ", ""))
 
     def get(self):
-        return user_repository.get_all_users()
+        users = user_repository.get_all_users()
+        return json.loads(json_util.dumps(users))
 
 
 class LoginController(ApiResource):

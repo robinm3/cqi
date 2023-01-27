@@ -50,8 +50,7 @@ class UserRepository:
 
     def get_all_users(self):
         users = list(self.user_db.find())
-        users_json = json.dumps(users, default=str)
-        return users_json
+        return users
 
 
     def login(self, email: str, password: str) -> str:
