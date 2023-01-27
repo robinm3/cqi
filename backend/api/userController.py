@@ -13,7 +13,7 @@ class UserController(ApiResource):
 
     def post(self):
         data = request.get_json()
-        return user_repository.sign_up(data['email'], data['password'])
+        return user_repository.create_account(data['email'], data['first_name'], data['last_name'], data['type'])
 
     def put(self):
         data = request.get_json()
