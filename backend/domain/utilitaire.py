@@ -13,11 +13,11 @@ def generate_random_string(length: int) -> str:
 
 def send_email_fr(content, subject,  email):
     message = Mail(
-        from_email='marcanthony.girard.protic@gmail.com',
+        from_email='',
         to_emails=email,
         subject=subject,
         html_content=content)
-    sg = SendGridAPIClient("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")
+    sg = SendGridAPIClient("")
     response = sg.send(message)
 
 
